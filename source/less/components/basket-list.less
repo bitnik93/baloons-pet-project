@@ -1,0 +1,132 @@
+.basket-list {
+  display: flex;
+  flex-direction: column;
+  min-width: 900px;
+}
+
+.basket-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}
+
+.basket-list__item-img-cont {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.basket-list__price-item-cont {
+  display: flex;
+  align-items: center;
+  order: 3;
+}
+
+.basket-list__item-number {
+  margin-right: 25px;
+}
+
+
+.basket-list__price-item-total {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.basket-list__price-cancel {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.basket-list__item-desc {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: baseline;
+  height: 100%;
+  max-width: 250px;
+}
+
+.basket-list__item-price {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.basket-list__item-old-price {
+  color: #8b8b8b;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.basket-list__item-par {
+  color: #3a3a3a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.basket-list__item-article {
+  font-size: 14px;
+  font-weight: 500;
+  color: #888888;
+}
+
+.basket-list__item-code {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.basket-list__item-button {
+  .list-reset;
+  border: none;
+  background-color: transparent;
+}
+
+.basket-list__item-buttons-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 90px;
+}
+
+
+.basket-list__item-count {
+  width: 40px;
+  box-sizing: border-box;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.basket-list__item-button-minus {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../img/minus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: 25px;
+  height: 25px;
+}
+
+.basket-list__item-button-plus {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url("../../img/plus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+}
+

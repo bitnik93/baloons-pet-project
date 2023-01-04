@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="./fonts/Montserrat-Medium.woff2" as="font">
+    <link rel="stylesheet" href="css/style.min.css">
+    <title>Магазин шариков</title>
+  </head>
+  <body class="body">
+    <header class="header body__header">
+      <nav class="main-nav header__nav">
+          <a class="logo-link main-nav__link" href="index.html"><logo class="main-nav__logo"><img src="img/logo.svg" alt="logo"></logo></a>
+        <a class="main-nav__button button button--catalog" href="catalog.html"><img src="./img/catalog-icon.svg"/>Каталог</a>
+        <div class="main-nav__container">
+          <img src="img/search-icon.svg" width="10" height="10" alt="">
+          <input type="text" class="main-nav__input" placeholder="Поиск">
+        </div>
+        <ul class="main-nav__list main-nav-list list-reset">
+          <li class="main-nav-list__item">
+            <a href="" class="main-nav-list__link main-nav-list__link--active">Акции</a>
+          </li>
+          <li class="main-nav-list__item">
+            <a href="" class="main-nav-list__link">Доставка</a>
+          </li>
+          <li class="main-nav-list__item">
+            <a href="catalog.html" class="main-nav-list__link">Контакты</a>
+          </li>
+          <li class="main-nav-list__item">
+            <a href="" class="main-nav-list__link">Галерея</a>
+          </li>
+          <li class="main-nav-list__item">
+            <a href="" class="main-nav-list__link">Отзывы</a>
+          </li>
+          <li class="main-nav-list__item">
+            <a href="basket.html" class="main-nav-list__link"><img src="./img/buy-icon.svg" width="26.5" height="29"/></a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="header__store-nav store-nav">
+        <ul class="store-nav-list store-nav__list list-reset">
+          <li class="store-nav-list__item">
+            <a class="store-nav-links-list__item" href="">Латексные шары</a>
+          </li>
+          <li class="store-nav-list__item">
+            <a class="store-nav-links-list__item" href="">Фольгированые шары</a>
+            </li>
+          <li class="store-nav-list__item"><a class="store-nav-links-list__item" href="">Цифры</a></li>
+          <li class="store-nav-list__item"><a class="store-nav-links-list__item" href="">3D Сферы</a></li>
+          <li class="store-nav-list__item"><a class="store-nav-links-list__item" href="">Хромовые шары</a></li>
+        </ul>
+        <ul class="store-nav-links-list store-nav__links-list list-reset">
+          <li class="store-nav-links-list__item"><a href="tel:+78612042446" class="store-nav-links-list__phone">+78612042446</a></li>
+          <li class="store-nav-links-list__item"><a href=""><img src="img/insta.svg" alt="Insta"></a></li>
+          <li class="store-nav-links-list__item"><a href=""><img src="img/whatsapp.svg" alt="whatsup"></a></li>
+          <li class="store-nav-links-list__item"><span class="store-nav-links-list__work-hours">Режим работы</span><span class="store-nav-links-list__work-hours">Круглосуточно</span></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <section class="basket container">
+        <h1 class="container__article visually-hidden">Корзина</h1>
+        <div class="container__nav-container">
+          <a href="index.html" class="container__nav-link">Главная</a>
+          <span class="container__nav-separator"> / </span>
+          <a href="" class="container__nav-link"> Корзина</a>
+          <a href="" class="container__nav-link-back-to-store"> Вернуться в магазин</a>
+        </div>
+        <div class="basket__total-wrapper">
+          <ul class="basket-list basket__list list-reset">
+            <!-- <li class="basket-list__item" data-article-id="1">
+              <div class="basket-list__price-item-cont">
+                <h2 class="basket-list__price-item-total">1450</h2>р
+                <button class="basket-list__price-cancel">
+                  <img src="img/cross.svg" width="30" height="30" alt="">
+                </button>
+              </div>
+              <div class="basket-list__item-container">
+                <div class="basket-list__item-img-cont">
+                  <span class="basket-list__item-number">1</span>
+                  <img src="img/basket-product-image-1.jpg" alt="" class="basket-list__img" width="192" height="166">
+                <span></span>
+                </div>
+              </div>
+              <div class="basket-list__item-desc">
+                <h3 class="basket-list__item-price">1450</h3>р
+                <del class="basket-list__item-old-price">1540р</del>
+                <p class="basket-list__item-par">Композиция шаров на день
+                  рождения для мальчика</p>
+                <small class="basket-list__item-article">Код товара</small>
+                <span class="basket-list__item-code">54223</span>
+              </div>
+              <div class="basket-list__item-buttons-cont">
+                <button class="basket-list__item-button-minus" data-minus></button>
+                <span class="basket-list__item-count">1</span>
+                <button class="basket-list__item-button-plus" data-plus></button></div>
+            </li>
+            <li class="basket-list__item" data-article-id="2">
+              <div class="basket-list__price-item-cont">
+                <h2 class="basket-list__price-item-total">1450</h2>р
+                <button class="basket-list__price-cancel">
+                  <img src="img/cross.svg" width="30" height="30" alt="">
+                </button>
+              </div>
+              <div class="basket-list__item-container">
+                <div class="basket-list__item-img-cont">
+                  <span class="basket-list__item-number">1</span>
+                  <img src="img/basket-product-image-1.jpg" alt="" class="basket-list__img" width="192" height="166">
+                <span></span>
+                </div>
+              </div>
+              <div class="basket-list__item-desc">
+                <h3 class="basket-list__item-price">1450</h3>р
+                <del class="basket-list__item-old-price">1540р</del>
+                <p class="basket-list__item-par">Композиция шаров на день
+                  рождения для мальчика</p>
+                <small class="basket-list__item-article">Код товара</small>
+                <span class="basket-list__item-code">54223</span>
+              </div>
+              <div class="basket-list__item-buttons-cont">
+                <button class="basket-list__item-button-minus" data-minus></button>
+                <span class="basket-list__item-count">1</span>
+                <button class="basket-list__item-button-plus" data-plus></div>
+            </li>
+            <li class="basket-list__item" data-article-id="3">
+              <div class="basket-list__price-item-cont">
+                <h2 class="basket-list__price-item-total">1450</h2>р
+                <button class="basket-list__price-cancel">
+                  <img src="img/cross.svg" width="30" height="30" alt="">
+                </button>
+              </div>
+              <div class="basket-list__item-container">
+                <div class="basket-list__item-img-cont">
+                  <span class="basket-list__item-number">1</span>
+                  <img src="img/basket-product-image-1.jpg" alt="" class="basket-list__img" width="192" height="166">
+                <span></span>
+                </div>
+              </div>
+              <div class="basket-list__item-desc">
+                <h3 class="basket-list__item-price">1450</h3>р
+                <del class="basket-list__item-old-price">1540р</del>
+                <p class="basket-list__item-par">Композиция шаров на день
+                  рождения для мальчика</p>
+                <small class="basket-list__item-article">Код товара</small>
+                <span class="basket-list__item-code">54223</span>
+              </div>
+              <div class="basket-list__item-buttons-cont">
+                <button class="basket-list__item-button-minus" data-minus></button>
+                <span class="basket-list__item-count">1</span>
+                <button class="basket-list__item-button-plus" data-plus>
+                </div>
+            </li> -->
+          </ul>
+          <div class="total-container basket__total">
+            <h2 class="total-container__total">Итого</h2>
+            <div class="total-container__desc">
+              <div class="total-container__count-wrapper">
+                <span class="total-container__count-product">3
+                  <span class="total-container__count-desc"> позиций</span>
+                </span>
+                <span class="total-container__count-product">7
+                  <span class="total-container__count-desc">товаров</span>
+                </span>
+              </div>
+              <div class="total-container__info-wrapper">
+                <span class="total-container__info">Сумма заказа</span>
+                <b class="total-container__info-sum">10674р</b>
+                <span class="total-container__info">Промокод</span>
+                <b class="total-container__info-sum">335A</b>
+                <span class="total-container__info">Скидка по коду</span>
+                <b class="total-container__info-sum">76р</b>
+              </div>
+            </div>
+            <div class="total-container__sum-wrapper">
+              <h3 class="total-container__sum">75027</h3>р
+            </div>
+            <div class="total-container__call">
+              <input type="text" class="total-container__input" placeholder="Ваш номер телефона">
+              <button class="button total-container__button">Заказать</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__logo">
+        <a class="logo-link main-nav__link" href="#">
+          <logo class="main-nav__logo"><img src="img/logo.svg" alt="logo"></logo></a>
+        </div>
+      <div class="adress-city-one footer__adress-container">
+        <span class="adress__desc">Адрес:</span>
+        <p class="adress__point">Заветный, ул. Энгельса, 57/2</p>
+        <span class="adress__operating-mode">Режим работы:</span>
+        <p class="adress__operation-mode-status">Круглосуточно</p>
+      </div>
+      <div class="adress-city-two footer__adress-container">
+        <span class="adress__desc">Адрес:</span>
+        <p class="adress__point">Армавир, ул. 8 Марта, 365</p>
+        <span class="adress__operating-mode">Режим работы:</span>
+        <p class="adress__operation-mode-status">Пн-Пт: 10:00-20:00</p>
+      </div>
+      <div>
+        <ul class="store-nav-links-list store-nav__links-list footer__nav-links-list list-reset">
+          <li class="store-nav-links-list__item footer__nav-links--item"><a href="tel:+78612042446" class="store-nav-links-list__phone">+7 918 158 41 19</a></li>
+          <li class="store-nav-links-list__item footer__nav-links--item"><a href="#"><img src="img/insta.svg" alt="Insta"></a></li>
+          <li class="store-nav-links-list__item footer__nav-links--item"><a href="#"><img src="img/whatsapp.svg" alt="whatsup"></a></li>
+          <li class="store-nav-links-list__item footer__nav-links--item">
+            <span class="store-nav-links-list__work-hours">мы в соц. сетях</span>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <!-- <div class="popup-container">
+      <section class="popup">
+        <h2 class="popup__title">Заказ успешно оформлен</h2>
+        <span class="popup__desc">Менеджер свяжиться с вами в ближайшее время</span>
+        <button class="popup__button">Вернуться в магазин</button>
+      </section>
+    </div> -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+    <script src="js/main.js" type="module"></script>
+    <template id="basket-item">
+                  <li class="basket-list__item">
+              <div class="basket-list__price-item-cont">
+                <h2 class="basket-list__price-item-total">1450р</h2>
+                <button class="basket-list__price-cancel">
+                  <img src="img/cross.svg" width="30" height="30" alt="">
+                </button>
+              </div>
+              <div class="basket-list__item-container">
+                <div class="basket-list__item-img-cont">
+                  <span class="basket-list__item-number">1</span>
+                  <img src="img/basket-product-image-1.jpg" alt="" class="basket-list__img" width="192" height="166">
+                <span></span>
+                </div>
+              </div>
+              <div class="basket-list__item-desc">
+                <h3 class="basket-list__item-price">1450р</h3>
+                <del class="basket-list__item-old-price">1540р</del>
+                <p class="basket-list__item-par">Композиция шаров на день
+                  рождения для мальчика</p>
+                <small class="basket-list__item-article">Код товара</small>
+                <span class="basket-list__item-code">54223</span>
+              </div>
+              <div class="basket-list__item-buttons-cont">
+                <button class="basket-list__item-button-minus"></button>
+                <input class="basket-list__item-count" placeholder="1"></input>
+                <button class="basket-list__item-button-plus"></div>
+            </li>
+    </template>
+  </body>
+</html>

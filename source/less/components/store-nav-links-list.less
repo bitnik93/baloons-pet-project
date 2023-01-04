@@ -1,0 +1,41 @@
+.store-nav-links-list {
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+}
+
+.store-nav-links-list__item:not(:first-child) {
+  margin-left: 40px;
+}
+
+.store-nav-links-list__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.store-nav-links-list__work-hours {
+  &:first-child {
+    font-size: 12px;
+  }
+
+  &:last-child {
+    font-size: 14px;
+  }
+}
+
+.store-nav-links-list__phone {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  position: relative;
+}
+
+.store-nav-links-list__phone::before {
+  width: 11px;
+  height: 5px;
+  position: absolute;
+  content: "";
+  left: -16px;
+  top: 25px;
+  background-image: url("../../img/Rectangle-tel.svg");
+}
