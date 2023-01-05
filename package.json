@@ -1,7 +1,7 @@
 {
-  "name": "pink-24",
+  "name": "baloons",
   "private": true,
-  "description": "Личный проект «Пинк» от HTML Academy",
+  "description": "pet Project",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.0.0",
     "@squoosh/lib": "^0.4.0",
