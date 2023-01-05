@@ -286,13 +286,13 @@ let productsData = [];
 let productInfo;
 
 
-// window.addEventListener('storage', () => {
-//   let oldProductsStorage = localStorage.getItem('baloons1')
-//   let oldProducts = JSON.parse(oldProductsStorage)
-//   localStorage.setItem('baloons1', oldProducts);
-//     data['baloons1'] = oldProducts;
+window.addEventListener('storage', () => {
+  let oldProductsStorage = localStorage.getItem('baloons1')
+  let oldProducts = JSON.parse(oldProductsStorage)
+  localStorage.setItem('baloons1', oldProducts);
+    data['baloons1'] = oldProducts;
 
-// })
+})
 
 //kskskksllk;lkl;k
 
