@@ -113,43 +113,38 @@ if (window.location.pathname === '/basket.html') {
   // let chosenGoods = localStorage.getItem();
   // console.log(chosenGoods)
   // let products = JSON.parse(chosenGoods);
-
+  const localStorageList = Object.keys(localStorage);
 const products = [];
 
-
-
-// const product = JSON.parse(chosenGoods);
-
-  for (let key in data) {
-    const localStorageProcucts = localStorage.getItem(key);
+const productsList = () => {
+  localStorageList.forEach((item) => {
+    const localStorageProcucts = localStorage.getItem(item);
     const basketDataProducts = JSON.parse(localStorageProcucts)
-    if (basketDataProducts) {
-      products.push(basketDataProducts)
-    }
-  }
+    products.push(basketDataProducts)
+  })
+}
+productsList()
 
-
-// window.addEventListener('storage', (evt) => {
-//   const data = {};
-//   // let newValueBasketProducts = JSON.parse(evt.newValue)
-//   //   products = newValueBasketProducts;
-//   data.name = products
-//     console.log(data)
-//     console.log('aaa')
-//     // console.log(newValueBasketProducts, 'newValue')
-// })
-
-
-// // console.log(Array.from(products))
-
-//   // console.log(localStorage.removeItem())
-//   // localStorage.removeItem('1');
-
-//   // localStorage.clear();
-// //-------------
+//
+// const localStorageBasketProducts = () => {
+//     for (let i = 0; i < localStorage.length; i++) {
+//       const item = localStorage.getItem(i)
+//       console.log(item)
+//     }
+// }
+// localStorageBasketProducts()
+// const product = JSON.parse(chosenGoods);
+//   for (let key in data) {
+//     const localStorageProcucts = localStorage.getItem(key);
+//     const basketDataProducts = JSON.parse(localStorageProcucts)
+//     if (basketDataProducts) {
+//       products.push(basketDataProducts)
+//     }
+//   }
+//
   products && products.forEach((product, index) => {
     const newTemplateItem = TemplateItem.cloneNode(true);
-    newTemplateItem.dataset.id = product.code;
+    newTemplateItem.dataset.id = product.name;
     newTemplateItem.querySelector('.basket-list__item-number').textContent = index + 1;
     newTemplateItem.querySelector('.basket-list__img').src = product.image;
     newTemplateItem.querySelector('.basket-list__item-count').value = product.count;
@@ -164,10 +159,10 @@ const products = [];
   });
 //--------
 
-  // let totalItemPrice = document.querySelector('.basket-list__price-item-total')
-  // let newTotalItemPrice = null;
-  // let totalSum = document.querySelector('.total-container__sum');
-  // let countSumNum =  Number(totalSum.textContent);
+  let totalItemPrice = document.querySelector('.basket-list__price-item-total')
+  let newTotalItemPrice = null;
+  let totalSum = document.querySelector('.total-container__sum');
+  let countSumNum =  Number(totalSum.textContent);
 
   // const onPlusCount = function (evt)  {
   //   console.log(this.children)
@@ -214,7 +209,6 @@ const products = [];
     const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
     let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
     const ITEMSTEP = newBasketItem.querySelector('.basket-list__item-price');
-    console.log(newBasketCount.value)
       if (newBasketButtonMinus) {
       newBasketCount.textContent--;
       newBasketItemPrice.innerHTML = Number(newBasketItemPrice.innerHTML) - Number(ITEMSTEP.innerHTML);

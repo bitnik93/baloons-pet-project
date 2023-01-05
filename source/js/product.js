@@ -1,4 +1,5 @@
 if (window.location.pathname === '/product.html') {
+  // моковые данные
   const data = {
     'baloons1' : {
         name : 'baloons1',
@@ -143,6 +144,7 @@ const plusButton = pageContainer.querySelector('.basket-list__item-button-plus')
 let chosenProduct = localStorage.getItem('productData');
 let productData = JSON.parse(chosenProduct);
 
+// функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
         const compoundButton = evt.target.closest('.buy-buttons-container--compound');
 
@@ -155,18 +157,19 @@ const compoundButtonsHandler = (evt) => {
 compoundButtonsContainer.addEventListener('click', compoundButtonsHandler)
 
 let productSmallPhotoNumber = pageContainer.querySelector('.product-page__photo-number');
-
 let localStorageProcucts;
-let basketDataProducts;
 let addedProductItemCount;
 
+
+// функция проверки на новый продукт в localStorage
 const newProductsInBasket = () => {
-  // console.log(productData)
     localStorageProcucts = localStorage.getItem(buttonsContainer.dataset.count)
   if (!localStorageProcucts) {
     return true;
   }
 }
+
+// отрисовка страницы продукта
 
 const productPage = (product) => {
   buttonsContainer.dataset.count = product.name;
@@ -187,32 +190,71 @@ const productPage = (product) => {
             smallphoto.src = productKeys[id];
     })
 }
+
 productPage(productData);
 
-// oldLocalStorage
+// функция скрытия кнопки и показа счетиков добавления товара
 
-const onAddMoreProducts = () => {
-  let getLocalStorageItem = localStorage.getItem(data[buttonsContainer.dataset.count].name) ;
-  addedProductItemCount = JSON.parse(getLocalStorageItem) || productData;
-      addInputProduct.value = addedProductItemCount.count;
-      console.log(addedProductItemCount.count)
-      plusButton.addEventListener('click', () => {
-        addedProductItemCount.count++;
-              addInputProduct.value++;
-        localStorage.setItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
-      })
+const onOpenCountProductHandler = () => {
+  addProductInStorage();
+  onAddLessProducts()
+  onAddMoreProducts();
+  buyProductButton.style.display = 'none';
+  addProductButtonsContainer.style.display = 'flex';
 }
 
-const onAddLessProducts = () => {
-  let getLocalStorageItem = localStorage.getItem(data[buttonsContainer.dataset.count].name) ;
-  addedProductItemCount = JSON.parse(getLocalStorageItem) || productData;
-      addInputProduct.value = addedProductItemCount.count;
-      minusButton.addEventListener('click', () => {
-        addedProductItemCount.count--;
-              addInputProduct.value--;
-        localStorage.setItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
-      })
+// функция добавления/удаления продуктов по нажатия на клавиатуру
+
+const onKeydownChangeCountProductsHandler = (evt) => {
+  if (evt.key === 'Enter' && addInputProduct.value <= 0 ) {
+    addInputProduct.value = 0;
+    addedProductItemCount.count = addInputProduct.value;
+    localStorage.removeItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
+    buyProductButton.style.display = 'flex';
+    addProductButtonsContainer.style.display = 'none';
+  }
+  if (evt.key === 'Enter' && addInputProduct.value > 0) {
+    addedProductItemCount.count = addInputProduct.value;
+    localStorage.setItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
+  }
 }
+
+// функции увеличивания/уменьшения колличества продуктов
+const onLessProductsHandler = () => {
+    addedProductItemCount.count--;
+          addInputProduct.value--;
+    localStorage.setItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
+    if (addedProductItemCount.count === 0) {
+      buyProductButton.style.display = 'flex';
+      addProductButtonsContainer.style.display = 'none';
+      localStorage.removeItem(data[buttonsContainer.dataset.count].name)
+    }
+  }
+  const onMoreProductsHandler = () => {
+    addedProductItemCount.count++;
+          addInputProduct.value++;
+    localStorage.setItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
+  }
+
+// функции-обработчики уменьшения/увеличивания продуктов и удаление из localStorage
+
+  const onAddLessProducts = () => {
+    let getLocalStorageItem = localStorage.getItem(data[buttonsContainer.dataset.count].name) ;
+    addedProductItemCount = JSON.parse(getLocalStorageItem);
+        addInputProduct.value = addedProductItemCount.count;
+        addInputProduct.addEventListener('keydown', onKeydownChangeCountProductsHandler)
+        minusButton.addEventListener('click', onLessProductsHandler)
+        buyProductButton.addEventListener('click', onOpenCountProductHandler)
+  }
+
+  const onAddMoreProducts = () => {
+    let getLocalStorageItem = localStorage.getItem(data[buttonsContainer.dataset.count].name) ;
+    addedProductItemCount = JSON.parse(getLocalStorageItem);
+        addInputProduct.value = addedProductItemCount.count;
+        addInputProduct.addEventListener('keydown', onKeydownChangeCountProductsHandler)
+        plusButton.addEventListener('click', onMoreProductsHandler)
+  }
+
 
 
 const onAddMoreOrLessProductCount = () => {
@@ -222,8 +264,6 @@ const onAddMoreOrLessProductCount = () => {
     onAddMoreProducts();
 }
 
-
-
 // добавление продукта в localStorage
 const addProductInStorage = () => {
   addInputProduct.value = 1;
@@ -232,22 +272,13 @@ const addProductInStorage = () => {
   localStorage.setItem(buttonsContainer.dataset.count, JSON.stringify(addedProductArticle));
 }
 
-// кнопка покупки скрывается и появляются кнопк добавления товара,
+// кнопка покупки скрывается и появляются кнопка добавления товара,
 const BuyProductHandler = () => {
-  buyProductButton.addEventListener('click', () => {
-    addProductInStorage();
-    onAddLessProducts()
-    onAddMoreProducts();
-    buyProductButton.style.display = 'none';
-    addProductButtonsContainer.style.display = 'flex';
-  })
+  buyProductButton.addEventListener('click', onOpenCountProductHandler)
 }
 
-newProductsInBasket() ?  BuyProductHandler() : onAddMoreOrLessProductCount();
-
-
-
-
+// проверка на новый продукт, если нет, то срабатывает функция добавления удаления продуктов
+  newProductsInBasket() ?  BuyProductHandler() : onAddMoreOrLessProductCount();
 
 // маленькие и большие картинки
 const productPageListHandler = (evt) => {
