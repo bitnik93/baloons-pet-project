@@ -103,28 +103,44 @@ if (window.location.pathname === '/basket.html') {
         code: 392923
     }
 }
-
+// отрисовка товаров
   const template = document.querySelector('#basket-item').content;
   const TemplateItem = template.querySelector('.basket-list__item');
   const basket = document.querySelector('.basket-list');
 
 
+  let totalItemPrice = document.querySelector('.basket-list__price-item-total')
+  let newTotalItemPrice = null;
+
+//общая стоимость продуктов
+  let totalSum = document.querySelector('.total-container__sum');
 
   // let chosenGoods = localStorage.getItem();
   // console.log(chosenGoods)
   // let products = JSON.parse(chosenGoods);
   const localStorageList = Object.keys(localStorage);
 const products = [];
+const basketStorage = {};
+// фильтрация продуктов для корзины
+const filterProductsKeys = localStorageList.filter((product) => product != 'productData')
 
 const productsList = () => {
-  localStorageList.forEach((item) => {
+  filterProductsKeys.forEach((item) => {
     const localStorageProcucts = localStorage.getItem(item);
-    const basketDataProducts = JSON.parse(localStorageProcucts)
+    const basketDataProducts = JSON.parse(localStorageProcucts);
     products.push(basketDataProducts)
   })
 }
 productsList()
 
+const basketStorageList = () => {
+  products.forEach((elem) => {
+    basketStorage[elem.name] = elem;
+  })
+}
+basketStorageList();
+
+// console.log(products)
 //
 // const localStorageBasketProducts = () => {
 //     for (let i = 0; i < localStorage.length; i++) {
@@ -154,15 +170,12 @@ productsList()
     newTemplateItem.querySelector('.basket-list__item-code').textContent = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-minus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-plus').dataset.id = product.code;
-    newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.price;
+    newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.price * product.count;
+    newTotalItemPrice += product.count * product.price;
     basket.appendChild(newTemplateItem);
   });
 //--------
-
-  let totalItemPrice = document.querySelector('.basket-list__price-item-total')
-  let newTotalItemPrice = null;
-  let totalSum = document.querySelector('.total-container__sum');
-  let countSumNum =  Number(totalSum.textContent);
+console.log(newTotalItemPrice)
 
   // const onPlusCount = function (evt)  {
   //   console.log(this.children)
@@ -205,44 +218,46 @@ productsList()
 
   const onMinusCount = function (evt)  {
     const newBasketButtonMinus = evt.target.closest('.basket-list__item-button-minus');
-    const newBasketItem = evt.target.closest('li')
-    const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
-    let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
-    const ITEMSTEP = newBasketItem.querySelector('.basket-list__item-price');
       if (newBasketButtonMinus) {
-      newBasketCount.textContent--;
-      newBasketItemPrice.innerHTML = Number(newBasketItemPrice.innerHTML) - Number(ITEMSTEP.innerHTML);
+        const newBasketItem = evt.target.closest('li')
+        const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
+        const basketStorageId = basketStorage[newBasketItem.dataset.id];
+        let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
+      newBasketCount.value--;
+      basketStorageId.count--;
+            newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price
+            basketStorageId.itemTotalPrice = newBasketItemPrice.textContent;
+        localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
       }
-      if (newBasketCount.value == 0) {
-
-        // newBasketItem.remove()
-  //   products.forEach((product, id) => {
-  //     // if (product.code == newBasketItem.dataset.id) {
-  //     //   products.splice(id, 1)
-  //     //   localStorage.setItem('data', JSON.stringify(products))
-  //     // }
-
-  // })
-
-  }
 };
 
   const onPlusCount = function (evt) {
-      const newBasketButtonPlus = evt.target.closest('.basket-list__item-button-plus');
-    const newBasketItem = evt.target.closest('li')
+    const newBasketButtonPlus = evt.target.closest('.basket-list__item-button-plus');
       if (newBasketButtonPlus) {
-      const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
-      let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
-      const ITEMSTEP = newBasketItem.querySelector('.basket-list__item-price');
-      newBasketCount.textContent++;
-      newBasketItemPrice.innerHTML = Number(newBasketItemPrice.innerHTML) + Number(ITEMSTEP.innerHTML);
-  }
+        const newBasketItem = evt.target.closest('li');
+        const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
+        const basketStorageId = basketStorage[newBasketItem.dataset.id];
+        let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
+        newBasketCount.value++;
+        basketStorageId.count++;
+        newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price
+        basketStorageId.itemTotalPrice = newBasketItemPrice.textContent;
+          localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+    }
 }
+
+const totalSumCost = () => {
+  totalSum.textContent = newTotalItemPrice;
+}
+
+totalSumCost()
 
   const onlistClick = function () {
     basket.addEventListener('click', onPlusCount);
     basket.addEventListener('click', onMinusCount);
     }
+
   onlistClick();
+
   }
 
