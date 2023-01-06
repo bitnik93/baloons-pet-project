@@ -1,5 +1,5 @@
 if (window.location.pathname === '/compositions.html') {
-const data = {
+  const data = {
     'baloons1' : {
         name : 'baloons1',
         url : '#',
@@ -7,7 +7,7 @@ const data = {
         price: 1000,
         code: 378394,
         count: 0,
-        discount: false,
+        discount: true,
         smallPhoto: [
             'img/top-seller-img-1-small-1.jpg',
             'img/top-seller-img-1-small-2.jpg',
@@ -55,6 +55,7 @@ const data = {
         url : '#',
         image : 'img/top-seller-img-5.jpg',
         price: 3000,
+        discount: false,
         count: 0,
         code: 267683
     },
@@ -72,6 +73,7 @@ const data = {
         url : '#',
         image : 'img/top-seller-img-2.jpg',
         price: 4000,
+        discount: false,
         count: 0,
         code: 843997
     },
@@ -102,8 +104,7 @@ const data = {
         count: 0,
         code: 392923
     }
-}
-
+  }
 const compositionsList = document.querySelector('.container__compositions-list') || undefined;
 // const compositionItems = Array.from(document.querySelectorAll('.container-list__item'));
 const compositionsProducts = Array.from(compositionsList.children);
@@ -119,7 +120,7 @@ const inputTo = document.querySelector('.container__price-input-to')
 
 // элемент скидки на товары
 const procentItem = document.querySelector('.container-list__procent');
-const PROCENT = Number(document.querySelector('.container-list__procent').textContent);
+const PROCENT = 23;
 
 
 // select container
@@ -132,92 +133,59 @@ const selectOptions = document.querySelector('.container__price-select');
 const compositionPricesList = () => {
         compositionsProducts.forEach((elem) => {
             const compositionitem = elem.dataset.article;
+            elem.dataset.discount = data[compositionitem].discount;
             const compositionPrice = elem.querySelector('.container-list__price');
             const compositionOldPrice = elem.querySelector('.container-list__old-price');
             const compositionTitle = elem.querySelector('.container-list__desc');
+            const compositionProcent = elem.querySelector('.container-list__procent');
             compositionTitle.textContent = data[compositionitem].name
-            compositionOldPrice.textContent = data[compositionitem].price + ((PROCENT / 100) * data[compositionitem].price);
-            compositionPrice.textContent = data[compositionitem].price;
-            procentItem.textContent = PROCENT;
+            compositionOldPrice.textContent = data[compositionitem].price;
+            if (data[compositionitem].discount) {
+              compositionProcent.textContent = PROCENT + ' %';
+              compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price);
+            }
+              else {
+                compositionProcent.style.display = 'none';
+              compositionOldPrice.style.display = 'none';
+              compositionPrice.textContent = data[compositionitem].price;
+            }
             elem.style.display = 'flex';
         });
 }
 
 compositionPricesList()
 
-// ----------------------
-// const isFilterRange = () => {
-//   compositionsProducts.filter((product) => {
-//     const compositionPrice = product.querySelector('.container-list__price').textContent;
-//     product.style.display = 'none';
-//     if ((compositionPrice >= inputFrom.value) && !inputTo.value) {
-//       product.style.display = 'flex';
-//     }
-//     else if (compositionPrice <= inputTo.value && !inputFrom.value) {
-//       product.style.display = 'flex';
-//     }
-//     else if(compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value) {
-//       product.style.display = 'flex';
-//     }
-//   })
-// }
-
-// const rangeFilter = (evt) => {
-//   if(evt.key === 'Enter') {
-//     isFilterRange();
-//   }
-// }
-
-// priceWrapper.addEventListener('keydown', rangeFilter);
-
-
-// const isProductsDiscountOn = () => {
-//   compositionsProducts.filter((product) => {
-//     const productPriceOff = product.querySelector('.container-list__procent');
-//     productPriceOff ?  product.style.display = 'flex': product.style.display = 'none';
-//   })
-// }
-
-// const onPriceOffHandler = (evt) => {
-//     const isPriceOffCheckboxOn = evt.target.checked;
-//   isPriceOffCheckboxOn ? isProductsDiscountOn() : compositionPricesList();
-// }
-
-// compositionInputPriceOff.addEventListener('change', onPriceOffHandler);
-// ---------------------------
 
 containerPriceSection.addEventListener('change', () => {
   const productPriceOff = document.querySelector('.container__price-input-off');
   compositionsProducts.filter((product) => {
+    const productPriceOffItem = product.querySelector('.container-list__procent');
     const compositionPrice = Number(product.querySelector('.container-list__price').textContent);
+    const compositionProcent = product.dataset.discount;
     product.style.display = 'none';
-    if ((compositionPrice >= inputFrom.value) && !inputTo.value) {
+    if ((compositionPrice >= inputFrom.value) && !inputTo.value && !productPriceOff.checked) {
       product.style.display = 'flex';
-      console.log('только больше')
+      // console.log('только больше')
     }
-    else if (compositionPrice <= inputTo.value && !inputFrom.value) {
+    else if (compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked) {
       product.style.display = 'flex';
       console.log('только меньше')
     }
     else if(!productPriceOff.checked && compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value) {
       product.style.display = 'flex';
-      // console.log(product.dataset.article,'без галочки')
       console.log('без галочки')
     }
-    else if(compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value && productPriceOff.checked) {
-      const productPriceOffItem = product.querySelector('.container-list__procent');
-      productPriceOffItem ?  product.style.display = 'flex': product.style.display = 'none';
+    else if(compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value && productPriceOff.checked && (compositionProcent == 'true')) {
+      product.style.display = 'flex';
       console.log('с галочкой и оба интупта')
     }
-    if(compositionPrice >= inputFrom.value && productPriceOff.checked && !inputTo.value) {
-      const productPriceOffItem = product.querySelector('.container-list__procent');
-      productPriceOffItem ?  product.style.display = 'flex': product.style.display = 'none';
+    else if(compositionPrice >= inputFrom.value && productPriceOff.checked && !inputTo.value && (compositionProcent == 'true')) {
+      product.style.display = 'flex';
       console.log('с галочкой и только от')
     }
-    if(compositionPrice <= inputTo.value && productPriceOff.checked && !inputFrom.value) {
-      const productPriceOffItem = product.querySelector('.container-list__procent');
-      productPriceOffItem ?  product.style.display = 'flex': product.style.display = 'none';
-      console.log('с галочкой и только от')
+    else if(compositionPrice <= inputTo.value && productPriceOff.checked && !inputFrom.value && (compositionProcent == 'true')) {
+      product.style.display = 'flex';
+      console.log('с галочкой и только до')
     }
   })
 })
@@ -228,13 +196,12 @@ const OnSortFilterHandler = (evt) => {
   if (evt.target.closest('.descending')) {
     arrItems.sort((a,b) => {
       return +b.querySelector('.container-list__price').textContent - +a.querySelector('.container-list__price').textContent;
-      // return  b.dataset.article -  a.datset.article;
+
     })
   }
   if (evt.target.closest('.ascending')) {
     arrItems.sort((a,b) => {
       return +a.querySelector('.container-list__price').textContent - +b.querySelector('.container-list__price').textContent;
-      // return  b.dataset.article -  a.datset.article;
     })
   }
   compositionsProducts.innerHtml = '';
