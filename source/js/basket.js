@@ -7,7 +7,8 @@ if (window.location.pathname === '/basket.html') {
         image : 'img/top-seller-img-1.jpg',
         price: 1000,
         code: 378394,
-        discount: false,
+        count: 0,
+        discount: true,
         smallPhoto: [
             'img/top-seller-img-1-small-1.jpg',
             'img/top-seller-img-1-small-2.jpg',
@@ -55,6 +56,7 @@ if (window.location.pathname === '/basket.html') {
         url : '#',
         image : 'img/top-seller-img-5.jpg',
         price: 3000,
+        discount: false,
         count: 0,
         code: 267683
     },
@@ -72,6 +74,7 @@ if (window.location.pathname === '/basket.html') {
         url : '#',
         image : 'img/top-seller-img-2.jpg',
         price: 4000,
+        discount: false,
         count: 0,
         code: 843997
     },
@@ -102,7 +105,7 @@ if (window.location.pathname === '/basket.html') {
         count: 0,
         code: 392923
     }
-}
+  }
 // отрисовка товаров
   const template = document.querySelector('#basket-item').content;
   const TemplateItem = template.querySelector('.basket-list__item');
@@ -115,12 +118,10 @@ if (window.location.pathname === '/basket.html') {
 //общая стоимость продуктов
   let totalSum = document.querySelector('.total-container__sum');
 
-  // let chosenGoods = localStorage.getItem();
-  // console.log(chosenGoods)
-  // let products = JSON.parse(chosenGoods);
   const localStorageList = Object.keys(localStorage);
 const products = [];
 const basketStorage = {};
+const basketGoodsAmount = {};
 // фильтрация продуктов для корзины
 const filterProductsKeys = localStorageList.filter((product) => product != 'productData')
 
@@ -172,46 +173,9 @@ basketStorageList();
     newTemplateItem.querySelector('.basket-list__item-button-plus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.price * product.count;
     newTotalItemPrice += product.count * product.price;
+    totalSum.textContent = newTotalItemPrice;
     basket.appendChild(newTemplateItem);
   });
-//--------
-console.log(newTotalItemPrice)
-
-  // const onPlusCount = function (evt)  {
-  //   console.log(this.children)
-  //   // console.log(evt.target)
-  //     const liChildren = this.children;
-  //     const countPlus = liChildren[3].children[1];
-  //     const countPrice = liChildren[2].children[0];
-  //     const countpriceNum =  Number(countPrice.textContent);
-
-  //     if (evt.target.closest('.basket-list__item-button-plus')) {
-  //         let newTotalSum = countSumNum += countpriceNum;
-  //         totalItemPrice.textContent * countPlus.textContent;
-  //         totalSum.textContent = newTotalSum
-  //         countPlus.textContent++;
-  //     }
-  // };
-
-
-  const goodsAmount = {};
-
-  // const onAmountChange = function (evt)  {
-  //     console.log(evt.target)
-  //     const articleId = evt.target.closest('.basket-list__item').dataset.articleId;
-  //     // console.log(Number(articleId))
-
-  //     if (evt.target.hasAttribute('data-plus')) {
-  //       console.log(evt.target.hasAttribute('data-plus'))
-
-  //         let newTotalSum = countSumNum += countpriceNum;
-  //         totalItemPrice.textContent * countPlus.textContent;
-  //         totalSum.textContent = newTotalSum
-  //         countPlus.textContent++;
-  //     } else if (evt.target.hasAttribute('data-minus')) {
-
-  //     }
-  // };
 
 
 
@@ -223,10 +187,12 @@ console.log(newTotalItemPrice)
         const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
         const basketStorageId = basketStorage[newBasketItem.dataset.id];
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
-      newBasketCount.value--;
-      basketStorageId.count--;
-            newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price
-            basketStorageId.itemTotalPrice = newBasketItemPrice.textContent;
+        newBasketCount.value--;
+        basketStorageId.count--;
+        newTotalItemPrice -= basketStorageId.price;
+        totalSum.textContent = newTotalItemPrice;
+        newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price;
+        basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
         localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
       }
 };
@@ -240,17 +206,14 @@ console.log(newTotalItemPrice)
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
         newBasketCount.value++;
         basketStorageId.count++;
-        newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price
-        basketStorageId.itemTotalPrice = newBasketItemPrice.textContent;
-          localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+        newTotalItemPrice += basketStorageId.price;
+        totalSum.textContent = newTotalItemPrice;
+        newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price;
+        basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
+        localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
     }
 }
 
-const totalSumCost = () => {
-  totalSum.textContent = newTotalItemPrice;
-}
-
-totalSumCost()
 
   const onlistClick = function () {
     basket.addEventListener('click', onPlusCount);

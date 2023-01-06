@@ -8,7 +8,7 @@ if (window.location.pathname === '/product.html') {
         price: 1000,
         code: 378394,
         count: 0,
-        discount: false,
+        discount: true,
         smallPhoto: [
             'img/top-seller-img-1-small-1.jpg',
             'img/top-seller-img-1-small-2.jpg',
@@ -56,6 +56,7 @@ if (window.location.pathname === '/product.html') {
         url : '#',
         image : 'img/top-seller-img-5.jpg',
         price: 3000,
+        discount: false,
         count: 0,
         code: 267683
     },
@@ -73,6 +74,7 @@ if (window.location.pathname === '/product.html') {
         url : '#',
         image : 'img/top-seller-img-2.jpg',
         price: 4000,
+        discount: false,
         count: 0,
         code: 843997
     },
@@ -103,7 +105,7 @@ if (window.location.pathname === '/product.html') {
         count: 0,
         code: 392923
     }
-}
+  }
 
 // название товара
 const productName = document.querySelector('.container__article');
@@ -131,6 +133,7 @@ const compoundButtons = compoundButtonsContainer.querySelectorAll('.buy-buttons-
 
 
 // кнопка 'в Корзину' и контейнер с кнопками добавления товаров
+const productProcent = pageContainer.querySelector('.cost-container__procent');
 const buyProductButton = pageContainer.querySelector('.buy-buttons-container--buy-button')
 const addProductButtonsContainer = pageContainer.querySelector('.basket-list.buy-buttons-container-count')
 const addInputProduct = pageContainer.querySelector('.basket-list__item-count');
@@ -144,6 +147,8 @@ const plusButton = pageContainer.querySelector('.basket-list__item-button-plus')
 let chosenProduct = localStorage.getItem('productData');
 let productData = JSON.parse(chosenProduct);
 
+
+const PROCENT = 23;
 // функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
         const compoundButton = evt.target.closest('.buy-buttons-container--compound');
@@ -159,6 +164,7 @@ compoundButtonsContainer.addEventListener('click', compoundButtonsHandler)
 let productSmallPhotoNumber = pageContainer.querySelector('.product-page__photo-number');
 let localStorageProcucts;
 let addedProductItemCount;
+
 
 
 // функция проверки на новый продукт в localStorage
@@ -178,14 +184,15 @@ const productPage = (product) => {
     productBigPhoto.src = product.image;
     productTitle.textContent = product.name;
     productPrice.textContent = product.price;
-    productOldPrice.textContent = product.price + 365;
+    if (product.discount) {
+      productPrice.textContent = product.price - ((PROCENT / 100) * product.price)
+    } else {
+      productPrice.textContent = product.price;
+      productProcent.style.display = 'none';
+      productOldPrice.style.display = 'none';
+    }
     productArticle.textContent = 'Артикул ' + product.code;
     const productKeys = productData.smallPhoto;
-      // if(oldValueArr) {
-      //   addInputProduct.value = oldValueArr.count;
-      //   buyProductButton.style.display = 'none';
-      //   addProductButtonsContainer.style.display = 'flex';
-      // }
     productSmallPhotos.forEach((smallphoto, id) => {
             smallphoto.src = productKeys[id];
     })
@@ -254,7 +261,6 @@ const onLessProductsHandler = () => {
         addInputProduct.addEventListener('keydown', onKeydownChangeCountProductsHandler)
         plusButton.addEventListener('click', onMoreProductsHandler)
   }
-
 
 
 const onAddMoreOrLessProductCount = () => {
