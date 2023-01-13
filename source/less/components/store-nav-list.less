@@ -5,12 +5,34 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 18px;
+  box-sizing: border-box;
+
+  @media (max-width: @mobile-width) {
+    min-width: 900px;
+    overflow: auto;
+  }
 }
 
 .store-nav-links-list__item {
   color: #000000;
 }
 
+.store-nav-list__item {
+  @media (max-width: @mobile-width) {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    min-width: 100px;
+    min-height: 40px;
+    border-radius: 20px;
+    border: 1px solid #eeeeee;
+  }
+}
+
 .store-nav-list__item:not(:last-child) {
   margin-right: 40px;
+
+  @media (max-width: @mobile-width) {
+    margin-right: 20px;
+  }
 }

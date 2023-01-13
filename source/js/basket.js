@@ -110,10 +110,20 @@ if (window.location.pathname === '/basket.html') {
   const template = document.querySelector('#basket-item').content;
   const TemplateItem = template.querySelector('.basket-list__item');
   const basket = document.querySelector('.basket-list');
+  const basketPositions = document.querySelector('.total-container__position');
+  const basketProducts = document.querySelector('.total-container__product');
+  const sumOrder = document.querySelector('.total-container__info-sum');
+
+  // кнопка Заказать
+  const PurchaseButton = document.querySelector('.total-container__button');
+
+  const PROCENT = 0;
 
 
   let totalItemPrice = document.querySelector('.basket-list__price-item-total')
   let newTotalItemPrice = null;
+  let newTotalItemsPositions  = null;
+  let newTotalItemsProducts = null;
 
 //общая стоимость продуктов
   let totalSum = document.querySelector('.total-container__sum');
@@ -123,7 +133,7 @@ const products = [];
 const basketStorage = {};
 const basketGoodsAmount = {};
 // фильтрация продуктов для корзины
-const filterProductsKeys = localStorageList.filter((product) => product != 'productData')
+const filterProductsKeys = localStorageList.filter((product) => product.includes('baloons'));
 
 const productsList = () => {
   filterProductsKeys.forEach((item) => {
@@ -159,21 +169,28 @@ basketStorageList();
 //     }
 //   }
 //
+
+
   products && products.forEach((product, index) => {
     const newTemplateItem = TemplateItem.cloneNode(true);
     newTemplateItem.dataset.id = product.name;
     newTemplateItem.querySelector('.basket-list__item-number').textContent = index + 1;
     newTemplateItem.querySelector('.basket-list__img').src = product.image;
     newTemplateItem.querySelector('.basket-list__item-count').value = product.count;
-    newTemplateItem.querySelector('.basket-list__item-price').textContent = product.price;
-    newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price + 365;
+    newTemplateItem.querySelector('.basket-list__item-procent').textContent = PROCENT + ' %';
+    newTemplateItem.querySelector('.basket-list__item-price').textContent = product.price - ((PROCENT / 100) * product.price);
+    newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price;
     newTemplateItem.querySelector('.basket-list__item-par').textContent = product.name;
     newTemplateItem.querySelector('.basket-list__item-code').textContent = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-minus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-plus').dataset.id = product.code;
-    newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.price * product.count;
-    newTotalItemPrice += product.count * product.price;
+    newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.count * (product.price - ((PROCENT / 100) * product.price));
+    newTotalItemPrice += product.count * (product.price - ((PROCENT / 100) * product.price));
+    sumOrder.textContent = newTotalItemPrice + ' p';
     totalSum.textContent = newTotalItemPrice;
+    newTotalItemsPositions += Number(product.count)
+    basketProducts.textContent = products.length;
+    basketPositions.textContent = newTotalItemsPositions;
     basket.appendChild(newTemplateItem);
   });
 
@@ -189,11 +206,17 @@ basketStorageList();
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
         newBasketCount.value--;
         basketStorageId.count--;
-        newTotalItemPrice -= basketStorageId.price;
+        newTotalItemPrice -= (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         totalSum.textContent = newTotalItemPrice;
-        newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price;
+        sumOrder.textContent = newTotalItemPrice + ' p';
+        newBasketItemPrice.innerHTML = basketStorageId.count * (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
         localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+        console.log(newBasketItem)
+        if (basketStorageId.count === 0) {
+          localStorage.removeItem(basketStorageId.name);
+          newBasketItem.remove();
+        }
       }
 };
 
@@ -206,13 +229,21 @@ basketStorageList();
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
         newBasketCount.value++;
         basketStorageId.count++;
-        newTotalItemPrice += basketStorageId.price;
+        newTotalItemPrice += (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         totalSum.textContent = newTotalItemPrice;
-        newBasketItemPrice.innerHTML = basketStorageId.count * basketStorageId.price;
+        sumOrder.textContent = newTotalItemPrice + ' p';
+        newBasketItemPrice.innerHTML = basketStorageId.count * (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
         localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
     }
 }
+
+const onPurchaseButtonHandler = () => {
+  basketStorageList();
+  localStorage.setItem('purchaseList', JSON.stringify(products));
+}
+
+PurchaseButton.addEventListener('click', onPurchaseButtonHandler)
 
 
   const onlistClick = function () {

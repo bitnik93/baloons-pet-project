@@ -1,0 +1,40 @@
+.contacts-nav {
+  display: flex;
+  min-width: 400px;
+  justify-content: space-between;
+
+  @media (max-width: 375px) {
+    display: none;
+  }
+}
+
+.contacts-nav__links-list {
+  min-width: 400px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: @mobile-width) {
+    display: none;
+  }
+}
+
+.contacts-nav-links-list__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts-nav-links-list__phone {
+  color: #000000;
+  position: relative;
+
+  &::before {
+    width: 11px;
+    height: 5px;
+    position: absolute;
+    content: "";
+    left: -16px;
+    top: 7px;
+    background-image: url("../../img/Rectangle-tel.svg");
+  }
+}
