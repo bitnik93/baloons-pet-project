@@ -6,6 +6,15 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  @media (max-width: @mobile-width) {
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+}
+
+.footer-store-nav-links-list-wrapper {
+  order: 1;
 }
 
 .footer__adress-container {
@@ -27,7 +36,12 @@
   max-width: 310px;
   min-height: 100px;
   flex-wrap: wrap;
+
+  @media (max-width: @mobile-width) {
+    justify-content: space-evenly;
+  }
 }
+
 
 .footer__nav-links--item a {
   .font-size(40px);
@@ -35,4 +49,14 @@
 
 .footer__nav-links--item:last-child {
   color: #5e5e5e;
+
+  @media (max-width: @mobile-width) {
+    display: none;
+  }
+}
+
+.footer__logo {
+  @media (max-width: @mobile-width) {
+    display: none;
+  }
 }

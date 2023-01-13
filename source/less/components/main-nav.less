@@ -2,7 +2,80 @@
   display: flex;
   align-items: center;
   width: 100%;
+  min-height: 110px;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-content: space-between;
+  box-sizing: border-box;
+
+  @media (max-width: @mobile-width) {
+    justify-content: space-between;
+  }
+}
+
+.main-nav__wrapper {
+  margin: 0 30px;
+}
+
+.main-nav__store-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  @media (max-width: @mobile-width) {
+    width: 250px;
+    overflow: auto;
+    order: 5;
+  }
+}
+
+.main-nav-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+
+  @media (max-width: 375px) {
+    display: none;
+  }
+}
+
+.main-nav__link {
+  @media (max-width: @mobile-width) {
+    order: 4;
+  }
+}
+
+.main-nav__mobile-button {
+  display: none;
+}
+
+.main-nav__mobile-button--closed {
+  @media (max-width: 375px) {
+    cursor: pointer;
+    display: flex;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    top: -5px;
+
+    &::before {
+      display: flex;
+      content: "";
+      width: 20px;
+      height: 3px;
+      border-radius: 4px;
+      background-color: #6d6d6d;
+      box-shadow: 0 5px 0 #6d6d6d, 0 10px 0 #6d6d6d;
+    }
+  }
+}
+
+.main-nav__button {
+  @media (max-width: @mobile-width) {
+    position: relative;
+    display: none;
+  }
 }
 
 .main-nav__container {
@@ -14,6 +87,11 @@
   min-height: 49px;
   box-sizing: border-box;
   padding-left: 5px;
+
+  @media (max-width: @mobile-width) {
+    min-width: 193px;
+    min-height: 49px;
+  }
 }
 
 
@@ -21,4 +99,59 @@
   width: 100%;
   min-height: 30px;
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
+
+.main-nav__search-container {
+  min-width: 650px;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: @mobile-width) {
+    min-width: 193px;
+    order: 2;
+  }
+}
+
+
+.main-nav__mobile-button--opened {
+  display: none;
+
+  @media (max-width: @mobile-width) {
+    cursor: pointer;
+    display: flex;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    top: -5px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 20px;
+      height: 3px;
+      border-radius: 4px;
+      background-color: #6d6d6d;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      content: "";
+      width: 20px;
+      height: 3px;
+      border-radius: 4px;
+      background-color: #6d6d6d;
+      transform: rotate(135deg);
+    }
+  }
+}
+
+// .main-nav--opened {
+//   position:absolute;
+//   width: 100%;
+//   min-height: 500px;
+//   background-color: #ffffff;
+// }

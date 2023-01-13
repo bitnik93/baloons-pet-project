@@ -105,8 +105,8 @@ if (window.location.pathname === '/compositions.html') {
         code: 392923
     }
   }
+  
 const compositionsList = document.querySelector('.container__compositions-list') || undefined;
-// const compositionItems = Array.from(document.querySelectorAll('.container-list__item'));
 const compositionsProducts = Array.from(compositionsList.children);
 const composition = compositionsList.children;
 const compositionItems = document.querySelectorAll('.container-list__item ');
@@ -165,7 +165,7 @@ containerPriceSection.addEventListener('change', () => {
     product.style.display = 'none';
     if ((compositionPrice >= inputFrom.value) && !inputTo.value && !productPriceOff.checked) {
       product.style.display = 'flex';
-      // console.log('только больше')
+      console.log('только больше')
     }
     else if (compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked) {
       product.style.display = 'flex';
@@ -212,56 +212,8 @@ const OnSortFilterHandler = (evt) => {
 
 selectOptions.addEventListener('click', OnSortFilterHandler)
 
-
-
-
-
-
-
-
-
-// console.log(localStorage)
-
-// console.log(localStorageCompositions)
-
-// const isLocalStorageFull = () => {
-//     let localStorageCompositions = JSON.parse(localStorage.data);
-//     if (JSON.parse(localStorage.data)) {
-//         localStorageCompositions.forEach(element => {
-//             productsData.push(element);
-//         });
-//     }
-// }
-
-// isLocalStorageFull();
-
-//-------------------------
-// window.addEventListener('storage', (evt) => {
-//         let newValueProducts = JSON.parse(evt.newValue)
-//         productsData = newValueProducts;
-//         if (productsData.length === 0) {
-//             localStorage.clear();
-//         }
-// //     const StorageLocal = localStorage.data || [];
-// //     productsData.length ? [] : StorageLocal;
-// //     // productsData.length ? console.log('zero') : console.log('ddd');
-// // console.log(productsData, 'убрал товар')
-// })
-//-----------------------------------------------
-
 let productsData = [];
 let productInfo;
-
-
-// window.addEventListener('storage', () => {
-//   let oldProductsStorage = localStorage.getItem('baloons1')
-//   let oldProducts = JSON.parse(oldProductsStorage)
-//   localStorage.setItem('baloons1', oldProducts);
-//     data['baloons1'] = oldProducts;
-
-// })
-
-
 
 const onClickHandler = function (evt) {
     evt.preventDefault();
