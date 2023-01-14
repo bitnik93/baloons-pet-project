@@ -105,7 +105,7 @@ if (window.location.pathname === '/compositions.html') {
         code: 392923
     }
   }
-  
+
 const compositionsList = document.querySelector('.container__compositions-list') || undefined;
 const compositionsProducts = Array.from(compositionsList.children);
 const composition = compositionsList.children;
@@ -139,15 +139,15 @@ const compositionPricesList = () => {
             const compositionTitle = elem.querySelector('.container-list__desc');
             const compositionProcent = elem.querySelector('.container-list__procent');
             compositionTitle.textContent = data[compositionitem].name
-            compositionOldPrice.textContent = data[compositionitem].price;
+            compositionOldPrice.textContent = data[compositionitem].price + ' p';
             if (data[compositionitem].discount) {
               compositionProcent.textContent = PROCENT + ' %';
-              compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price);
+              compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price) + ' p';
             }
               else {
                 compositionProcent.style.display = 'none';
               compositionOldPrice.style.display = 'none';
-              compositionPrice.textContent = data[compositionitem].price;
+              compositionPrice.textContent = data[compositionitem].price + ' p';
             }
             elem.style.display = 'flex';
         });
