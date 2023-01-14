@@ -1,11 +1,26 @@
 .product-page {
   display: flex;
+
+  @media (max-width: @mobile-width) {
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
 .product-page__list {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  @media (max-width: @mobile-width) {
+    flex-direction: row;
+  }
+}
+
+.product-page__big-photo-container {
+  @media (max-width: @mobile-width) {
+    display: none;
+  }
 }
 
 .product-page__big-photo {
@@ -16,6 +31,11 @@
 .product-page__photo-button {
   box-sizing: border-box;
   background-color: transparent;
+
+  @media (max-width: @mobile-width) {
+    min-width: 100px;
+    min-height: 30px;
+  }
 }
 
 .product-page__photo {

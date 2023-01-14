@@ -107,6 +107,9 @@ if (window.location.pathname === '/product.html') {
     }
   }
 
+// разрешение 375px;
+const mediaQuery = window.matchMedia('(max-width: 375px');
+
 // название товара
 const productName = document.querySelector('.container__article');
 // контейнер продукта
@@ -147,6 +150,26 @@ const plusButton = pageContainer.querySelector('.basket-list__item-button-plus')
 let chosenProduct = localStorage.getItem('productData');
 let productData = JSON.parse(chosenProduct);
 
+
+
+
+
+// прокрутка маленьких фото
+
+// const smallPhotoCarousel = () => {
+//   $(function() {
+//     $('.container-list--carousel').slick({
+//       infinite: true,
+//       slidesToShow: 2,
+//       slidesToScroll: 1,
+//       variableWidth: true,
+//       prevArrow: false,
+//       nextArrow: false,
+//     });
+//   });
+// }
+// smallPhotoCarousel()
+// mediaQuery.addEventListener('change', smallPhotoCarousel)
 
 const PROCENT = 23;
 // функция подсвечивания активного состава шарики

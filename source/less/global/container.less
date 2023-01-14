@@ -18,6 +18,8 @@
 
   @media (max-width: @mobile-width) {
     justify-content: center;
+    align-items: center;
+    min-height: 40px;
   }
 }
 
@@ -78,6 +80,10 @@
   }
 }
 
+.container-list__item-our-works:not(:last-child) {
+  margin-right: 10px;
+}
+
 .container-list__title-container {
   font-size: 16px;
   display: flex;
@@ -119,10 +125,14 @@
   }
 }
 
-.container-list--grid-5 {
+.container-list--grid-compositions {
   display: grid;
   gap: 50px 0;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  @media (max-width: @mobile-width) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .container-list__link {
@@ -189,12 +199,16 @@
 }
 
 .container__price-input {
-  border: 1px solid #000000;
+  border: 1px solid #3a3a3a;
   border-radius: 7px;
   max-width: 100px;
   min-height: 40px;
   box-sizing: border-box;
   margin-left: 15px;
+
+  @media (max-width: 375px) {
+    min-height: 30px;
+  }
 }
 
 
@@ -203,6 +217,10 @@
   display: flex;
   justify-content: space-between;
   max-width: 1027px;
+
+  @media (max-width: 375px) {
+    flex-wrap: wrap;
+  }
 }
 
 .container__price-wrapper {
@@ -214,6 +232,10 @@
   font-size: 20px;
   font-weight: 600;
   color: #525252;
+
+  @media (max-width: 375px) {
+    font-size: 16px;
+  }
 }
 
 .container__price-input-off {
@@ -232,6 +254,11 @@
   height: 40px;
   background-image: url("../../img/check-box__off.svg");
   background-repeat: no-repeat;
+
+  @media (max-width: 375px) {
+    background-position: 0 5px;
+    background-size: 30px 30px;
+  }
 }
 
 .container__price-input-off:checked + .container__price-checkbox {
@@ -243,10 +270,14 @@
   margin-left: 15px;
   font-size: 16px;
   height: 40px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #3a3a3a;
   color: #797979;
   border-radius: 7px;
   background-color: #ffffff;
+
+  @media (max-width: 375px) {
+    height: 30px;
+  }
 }
 
 .container__price-option {
