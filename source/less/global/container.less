@@ -40,6 +40,10 @@
   max-width: 940px;
   margin-top: 20px;
   display: flex;
+
+  @media (max-width: @mobile-width) {
+    display: none;
+  }
 }
 
 .container__see-more {
@@ -144,7 +148,7 @@
   align-items: center;
 
   @media (max-width: @mobile-width) {
-    min-height: 180px;
+    min-height: auto;
   }
 }
 

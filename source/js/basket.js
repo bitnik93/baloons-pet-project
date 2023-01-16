@@ -124,7 +124,7 @@ if (window.location.pathname === '/basket.html') {
   let newTotalItemPrice = null;
   let newTotalItemsPositions  = null;
   let newTotalItemsProducts = null;
-
+  let inputButtonCount = null;
 //общая стоимость продуктов
   let totalSum = document.querySelector('.total-container__sum');
 
@@ -195,6 +195,24 @@ basketStorageList();
   });
 
 
+  const onInputButtonCount = (evt) => {
+    if (evt.key === 'Enter') {
+      const newBasketItem = evt.target.closest('li');
+      const basketItemInput = evt.target.closest('.basket-list__item-count');
+      const basketStorageId = basketStorage[newBasketItem.dataset.id];
+      let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
+      basketStorageId.count = Number(basketItemInput.value);
+      newBasketItemPrice.innerHTML = basketItemInput.value * basketStorageId.price;
+      newTotalItemPrice = (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price)) * basketStorageId.count;
+      // const sumProd = products.reduce((total, product) => total + Number(product.count));
+      const basketInputs = document.querySelectorAll('.basket-list__item-count');
+      console.log(products)
+      const totalSumProducts = products.reduce((total, product) => total + (product.count * product.price), 0);
+      totalSum.textContent = totalSumProducts;
+      sumOrder.textContent =  totalSumProducts + ' p';
+      localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+    }
+  }
 
 
   const onMinusCount = function (evt)  {
@@ -247,6 +265,7 @@ PurchaseButton.addEventListener('click', onPurchaseButtonHandler)
 
 
   const onlistClick = function () {
+    basket.addEventListener('keydown', onInputButtonCount)
     basket.addEventListener('click', onPlusCount);
     basket.addEventListener('click', onMinusCount);
     }

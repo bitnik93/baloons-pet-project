@@ -3,17 +3,31 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: @mobile-width) {
+    justify-content: space-evenly;
+  }
 }
 
 .buy-buttons-container__title {
   width: 100%;
   font-size: 24px;
   font-weight: 600;
+
+  @media (max-width: @mobile-width) {
+    font-size: 18px;
+    text-align: center;
+  }
 }
 
 .buy-buttons-container__button {
   min-width: 190px;
   margin-top: 30px;
+
+  @media (max-width: @mobile-width) {
+    min-height: 40px;
+    min-width: 150px;
+  }
 }
 
 .buy-buttons-container--compound {
@@ -22,6 +36,10 @@
   font-weight: 500;
   background-color: #ffffff;
   border: 2px solid #6b6b6b;
+
+  @media (max-width: @mobile-width) {
+    font-size: 18px;
+  }
 }
 
 .buy-buttons-container__button--active {
@@ -52,4 +70,10 @@
   background: #c949ca;
   border: 2px solid #c949ca;
   border-radius: 10px;
+
+  @media (max-width: @mobile-width) {
+    font-size: 26px;
+    min-width: 300px;
+    min-height: 50px;
+  }
 }

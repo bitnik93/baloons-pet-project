@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="./fonts/Montserrat-Medium.woff2" as="font">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/style.min.css">
     <title>Магазин шариков</title>
   </head>
@@ -82,23 +84,23 @@
             <ul class="product-page__list list-reset">
               <li class="product-page__item">
                 <button class="button product-page__photo-button">
-                  <img src="img/product-small-photo-active.jpg" width="114" height="114" alt="" class="product-page__photo"></button>
+                  <img src="img/product-small-photo-active.jpg" width="250" height="300" alt="" class="product-page__photo"></button>
                 </li>
               <li class="product-page__item">
                 <button class="button product-page__photo-button">
-                  <img src="img/product-small-photo.jpg" width="114" height="114" alt="" class="product-page__photo"></button>
+                  <img src="img/product-small-photo.jpg" width="250" height="300"alt="" class="product-page__photo"></button>
                 </li>
               <li class="product-page__item">
                 <button class="button product-page__photo-button">
-                  <img src="img/product-small-photo.jpg" width="114" height="114" alt="" class="product-page__photo"></button>
+                  <img src="img/product-small-photo.jpg" width="250" height="300" alt="" class="product-page__photo"></button>
                 </li>
               <li class="product-page__item">
                 <button class="button product-page__photo-button">
-                  <img src="img/product-small-photo.jpg" width="114" height="114" alt="" class="product-page__photo"></button>
+                  <img src="img/product-small-photo.jpg" width="250" height="300" alt="" class="product-page__photo"></button>
                 </li>
               <li class="product-page__item">
                 <button class="button product-page__photo-button">
-                  <img src="img/product-small-photo.jpg" width="114" height="114" alt="" class="product-page__photo"></button>
+                  <img src="img/product-small-photo.jpg" width="250" height="300" alt="" class="product-page__photo"></button>
                 </li>
             </ul>
             <div class="product-page__big-photo-container">
@@ -121,7 +123,7 @@
                   <div class="basket-list buy-buttons-container-count">
                     <div class="basket-list__item-buttons-cont buy-buttons-container-count__buttons" data-count="">
                       <button class="basket-list__item-button-minus" data-minus="minus"></button>
-                      <input class="basket-list__item-count product-list-item__count" placeholder="1" value="444"></input>
+                      <input class="basket-list__item-count basket-list__item-count-product" placeholder="1" value="444"></input>
                       <button class="basket-list__item-button-plus" data-plus="plus"></button>
                     </div>
                   </div>
@@ -139,14 +141,13 @@
         <article class="container body__container">
           <div class="container__title-container">
             <h3 class="container__title">Акции</h3>
-            <a class="container__see-more">показать всё</a>
           </div>
           <div class="container__container">
-            <ul class="container-list container__list list-reset">
+            <ul class="container-list small-photos-list container__list list-reset">
               <li class="container-list__item container-list__item--flex">
-                <a class="container-list__link" href="#">
+                <a class="container-list__link small-photos-list__link" href="#">
                   <div class="container-list__link-container">
-                    <img src="img/stocks-img-1.jpg" width="249" height="309" alt="" class="container-list__img">
+                    <img class="small-photos-list__img-size" src="img/stocks-img-1.jpg" width="249" height="309" alt="" class="container-list__img">
                     <div class="container-list__price-container">
                       <h4 class="container-list__price">1450р</h4>
                       <del class="container-list__old-price">1540р</del>
@@ -157,9 +158,9 @@
                 </a>
               </li>
               <li class="container-list__item container-list__item--flex">
-                  <a class="container-list__link" href="#">
+                  <a class="container-list__link small-photos-list__link" href="#">
                     <div class="container-list__link-container">
-                      <img src="img/stocks-img-2.jpg" width="249" height="309" alt="" class="container-list__img">
+                      <img class="small-photos-list__img-size" src="img/stocks-img-2.jpg" width="249" height="309" alt="" class="container-list__img">
                       <div class="container-list__price-container">
                         <h4 class="container-list__price">1450р</h4>
                         <del class="container-list__old-price">1540р</del>
@@ -170,9 +171,9 @@
                 </a>
               </li>
               <li class="container-list__item container-list__item--flex">
-                <a class="container-list__link" href="#">
+                <a class="container-list__link small-photos-list__link" href="#">
                   <div class="container-list__link-container">
-                    <img src="img/stocks-img-3.jpg" width="249" height="309" alt="" class="container-list__img">
+                    <img class="small-photos-list__img-size" src="img/stocks-img-3.jpg" width="249" height="309" alt="" class="container-list__img">
                     <div class="container-list__price-container">
                       <h4 class="container-list__price">1450р</h4>
                       <del class="container-list__old-price">1540р</del>
@@ -183,9 +184,9 @@
                 </a>
               </li>
               <li class="container-list__item container-list__item--flex">
-                <a class="container-list__link" href="#">
+                <a class="container-list__link small-photos-list__link" href="#">
                   <div class="container-list__link-container">
-                    <img src="img/stocks-img-4.jpg" width="249" height="309" alt="" class="container-list__img">
+                    <img class="small-photos-list__img-size" src="img/stocks-img-4.jpg" width="249" height="309" alt="" class="container-list__img">
                     <div class="container-list__price-container">
                       <h4 class="container-list__price">1450р</h4>
                       <del class="container-list__old-price">1540р</del>
@@ -196,9 +197,9 @@
                 </a>
               </li>
               <li class="container-list__item container-list__item--flex">
-                <a class="container-list__link" href="#">
+                <a class="container-list__link small-photos-list__link" href="#">
                   <div class="container-list__link-container">
-                    <img src="img/stocks-img-5.jpg" width="249" height="309" alt="" class="container-list__img">
+                    <img class="small-photos-list__img-size" src="img/stocks-img-5.jpg" width="249" height="309" alt="" class="container-list__img">
                     <div class="container-list__price-container">
                       <h4 class="container-list__price">1450р</h4>
                       <del class="container-list__old-price">1540р</del>
