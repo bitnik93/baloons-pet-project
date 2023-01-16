@@ -138,16 +138,19 @@ const compositionPricesList = () => {
             const compositionOldPrice = elem.querySelector('.container-list__old-price');
             const compositionTitle = elem.querySelector('.container-list__desc');
             const compositionProcent = elem.querySelector('.container-list__procent');
+            const procentItemSign = elem.querySelector('.container-list__procent-sign');
             compositionTitle.textContent = data[compositionitem].name
-            compositionOldPrice.textContent = data[compositionitem].price + ' p';
+            compositionOldPrice.textContent = data[compositionitem].price;
             if (data[compositionitem].discount) {
-              compositionProcent.textContent = PROCENT + ' %';
-              compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price) + ' p';
+              procentItemSign.style.display = 'flex';
+              compositionProcent.textContent = PROCENT;
+              compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price);
             }
               else {
+                procentItemSign.style.display = 'none';
                 compositionProcent.style.display = 'none';
               compositionOldPrice.style.display = 'none';
-              compositionPrice.textContent = data[compositionitem].price + ' p';
+              compositionPrice.textContent = data[compositionitem].price;
             }
             elem.style.display = 'flex';
         });
@@ -162,6 +165,7 @@ containerPriceSection.addEventListener('change', () => {
     const productPriceOffItem = product.querySelector('.container-list__procent');
     const compositionPrice = Number(product.querySelector('.container-list__price').textContent);
     const compositionProcent = product.dataset.discount;
+    console.log(compositionPrice)
     product.style.display = 'none';
     if ((compositionPrice >= inputFrom.value) && !inputTo.value && !productPriceOff.checked) {
       product.style.display = 'flex';

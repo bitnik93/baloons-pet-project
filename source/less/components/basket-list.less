@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   min-width: 900px;
+
+  @media (max-width: @mobile-width) {
+    min-width: 100%;
+    flex-direction: column;
+  }
 }
 
 .basket-list__item {
@@ -9,8 +14,20 @@
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: @mobile-width) {
+    padding: 0 10px;
+    flex-wrap: wrap;
+  }
+
   &:not(:last-child) {
     margin-bottom: 40px;
+  }
+}
+
+.basket-list__img {
+  @media (max-width: @mobile-width) {
+    width: 90px;
+    height: 112px;
   }
 }
 
@@ -22,9 +39,15 @@
 }
 
 .basket-list__price-item-cont {
+  min-width: 200px;
   display: flex;
   align-items: center;
   order: 3;
+
+  @media (max-width: @mobile-width) {
+    min-width: 100px;
+    margin-right: 30px;
+  }
 }
 
 .basket-list__item-number {
@@ -35,6 +58,10 @@
 .basket-list__price-item-total {
   font-size: 40px;
   font-weight: 600;
+
+  @media (max-width: @mobile-width) {
+    font-size: 20px;
+  }
 }
 
 .basket-list__price-cancel {
@@ -52,11 +79,24 @@
   align-items: baseline;
   height: 100%;
   max-width: 250px;
+
+  @media (max-width: @mobile-width) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    max-width: 200px;
+    min-height: 100px;
+    flex-direction: column;
+  }
 }
 
 .basket-list__item-price {
   font-size: 24px;
   font-weight: 600;
+
+  @media (max-width: @mobile-width) {
+    font-size: 18px;
+  }
 }
 
 .basket-list__item-old-price {
@@ -64,24 +104,41 @@
   font-size: 16px;
   font-weight: 500;
   margin-left: 20px;
+
+  @media (max-width: @mobile-width) {
+    font-size: 10px;
+  }
 }
 
 .basket-list__item-par {
   color: #3a3a3a;
   font-size: 16px;
   font-weight: 600;
+
+  @media (max-width: @mobile-width) {
+    grid-column: -1 / 1;
+    font-size: 18px;
+  }
 }
 
 .basket-list__item-article {
   font-size: 14px;
   font-weight: 500;
   color: #888888;
+
+  @media (max-width: @mobile-width) {
+    font-size: 10px;
+  }
 }
 
 .basket-list__item-code {
   font-size: 14px;
   font-weight: 500;
   margin-left: 20px;
+
+  @media (max-width: @mobile-width) {
+    font-size: 10px;
+  }
 }
 
 .basket-list__item-button {
@@ -99,7 +156,7 @@
 
 
 .basket-list__item-count {
-  width: 40px;
+  width: 50px;
   box-sizing: border-box;
   border: none;
   font-size: 24px;
@@ -133,5 +190,15 @@
 
 .basket-list__item-procent {
   color: #c949ca;
+
+  @media (max-width: @mobile-width) {
+    font-size: 10px;
+  }
 }
 
+
+.basket-list__item-count-product {
+  @media (max-width: @mobile-width) {
+    margin-left: 0;
+  }
+}

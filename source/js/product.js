@@ -107,8 +107,7 @@ if (window.location.pathname === '/product.html') {
     }
   }
 
-// разрешение 375px;
-const mediaQuery = window.matchMedia('(max-width: 375px');
+
 
 // название товара
 const productName = document.querySelector('.container__article');
@@ -151,26 +150,42 @@ let chosenProduct = localStorage.getItem('productData');
 let productData = JSON.parse(chosenProduct);
 
 
-
-
-
 // прокрутка маленьких фото
+  $(function() {
+    $('.product-page__list').slick({
+      centerMode: true,
+      cssEase: 'linear',
+      infinite: true,
+      slidesToShow: 1,
+      variableWidth: true,
+      prevArrow: false,
+      nextArrow: false,
+      mobileFirst: true,
+      responsive : [
+        {
+          breakpoint: 376,
+          settings: "unslick"
+        }
+      ]
+    });
+  });
 
-// const smallPhotoCarousel = () => {
-//   $(function() {
-//     $('.container-list--carousel').slick({
-//       infinite: true,
-//       slidesToShow: 2,
-//       slidesToScroll: 1,
-//       variableWidth: true,
-//       prevArrow: false,
-//       nextArrow: false,
-//     });
+
+// const queryChangeSlickSlider = () => {
+//   window.addEventListener("resize", function() {
+//     if (window.innerWidth <= 768) {
+//       $('.product-page__list').slick('unslick');
+//       sliderIsLive = false;
+//     }
+//     else {
+//       if (sliderIsLive) {
+//         $('.product-page__list').slick();
+//         sliderIsLive = true;
+//       }
+//     }
 //   });
 // }
-// smallPhotoCarousel()
-// mediaQuery.addEventListener('change', smallPhotoCarousel)
-
+// queryChangeSlickSlider()
 const PROCENT = 23;
 // функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
@@ -209,6 +224,8 @@ const productPage = (product) => {
     productPrice.textContent = product.price;
     if (product.discount) {
       productPrice.textContent = product.price - ((PROCENT / 100) * product.price)
+      productProcent.textContent = PROCENT + ' %';
+      productProcent.style.display = 'flex';
     } else {
       productPrice.textContent = product.price;
       productProcent.style.display = 'none';
@@ -219,8 +236,13 @@ const productPage = (product) => {
     productSmallPhotos.forEach((smallphoto, id) => {
             smallphoto.src = productKeys[id];
     })
+    // if (mob) {
+    //   productSmallPhotos.forEach((smallPhoto) => {
+    //     smallPhoto.style.width = '250px';
+    //     smallPhoto.style.height = '301px';
+    //   })
+    // }
 }
-
 productPage(productData);
 
 // функция скрытия кнопки и показа счетиков добавления товара
@@ -238,13 +260,13 @@ const onOpenCountProductHandler = () => {
 const onKeydownChangeCountProductsHandler = (evt) => {
   if (evt.key === 'Enter' && addInputProduct.value <= 0 ) {
     addInputProduct.value = 0;
-    addedProductItemCount.count = addInputProduct.value;
+    addedProductItemCount.count = Number(addInputProduct.value);
     localStorage.removeItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
     buyProductButton.style.display = 'flex';
     addProductButtonsContainer.style.display = 'none';
   }
   if (evt.key === 'Enter' && addInputProduct.value > 0) {
-    addedProductItemCount.count = addInputProduct.value;
+    addedProductItemCount.count = Number(addInputProduct.value);
     localStorage.setItem(data[buttonsContainer.dataset.count].name, JSON.stringify(addedProductItemCount))
   }
 }
@@ -297,7 +319,7 @@ const onAddMoreOrLessProductCount = () => {
 const addProductInStorage = () => {
   addInputProduct.value = 1;
   let addedProductArticle = data[buttonsContainer.dataset.count];
-  addedProductArticle.count = addInputProduct.value;
+  addedProductArticle.count = Number(addInputProduct.value);
   localStorage.setItem(buttonsContainer.dataset.count, JSON.stringify(addedProductArticle));
 }
 
