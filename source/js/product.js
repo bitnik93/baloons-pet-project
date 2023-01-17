@@ -140,6 +140,9 @@ const productOldPrice = pageContainer.querySelector('.cost-container__old-price'
 const compoundButtonsContainer = pageContainer.querySelector('.buy-buttons-container')
 const compoundButtons = compoundButtonsContainer.querySelectorAll('.buy-buttons-container--compound')
 
+// акции
+const actions = document.querySelector('.small-photos-list');
+const actionsItems = actions.querySelectorAll('.container-list__item');
 
 // кнопка 'в Корзину' и контейнер с кнопками добавления товаров
 const productProcent = pageContainer.querySelector('.cost-container__procent');

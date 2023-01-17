@@ -38,7 +38,7 @@ mediaQuery.addEventListener('change', changeTextButton)
 
 
 
-if (window.location.pathname === '/index.html') {
+if (window.location.pathname === '/') {
 
   const data = {
     'baloons1' : {
@@ -206,7 +206,7 @@ if (window.location.pathname === '/index.html') {
 // dataKeys
 const dataKeys = Object.keys(data);
 
-
+console.log(window.location.pathname)
 // Лидеры продаж
 const leadersList = document.querySelector('.leaders-list');
 const leadersItems = leadersList.querySelectorAll('.container-list__item');
@@ -223,9 +223,7 @@ let productInfo;
 
 
 const onClickHanlder = (evt) => {
-
   window.location.href = 'product.html';
-
   let article = evt.target.closest('li').dataset.article;
   productInfo = data[article];
   localStorage.setItem('productData', JSON.stringify(productInfo));
