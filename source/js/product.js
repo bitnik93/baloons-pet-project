@@ -40,7 +40,14 @@ if (window.location.pathname === '/product.html') {
         price: 2000,
         discount: false,
         count: 0,
-        code: 389009
+        code: 389009,
+        smallPhoto: [
+          'img/top-seller-img-3-small-1.jpg',
+          'img/top-seller-img-3-small-2.jpg',
+          'img/top-seller-img-3-small-3.jpg',
+          'img/top-seller-img-3-small-4.jpg',
+          'img/top-seller-img-3-small-5.jpg',
+      ]
     },
     'baloons4' : {
         name : 'baloons4',
