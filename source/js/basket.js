@@ -115,6 +115,7 @@ if (window.location.pathname === '/basket.html') {
   const sumOrder = document.querySelector('.total-container__info-sum');
 
   // кнопка Заказать
+  const PurchasePopup = document.querySelector('.popup-container');
   const PurchaseButton = document.querySelector('.total-container__button');
 
   const PROCENT = 0;
@@ -150,25 +151,6 @@ const basketStorageList = () => {
   })
 }
 basketStorageList();
-
-// console.log(products)
-//
-// const localStorageBasketProducts = () => {
-//     for (let i = 0; i < localStorage.length; i++) {
-//       const item = localStorage.getItem(i)
-//       console.log(item)
-//     }
-// }
-// localStorageBasketProducts()
-// const product = JSON.parse(chosenGoods);
-//   for (let key in data) {
-//     const localStorageProcucts = localStorage.getItem(key);
-//     const basketDataProducts = JSON.parse(localStorageProcucts)
-//     if (basketDataProducts) {
-//       products.push(basketDataProducts)
-//     }
-//   }
-//
 
 
   products && products.forEach((product, index) => {
@@ -257,6 +239,7 @@ basketStorageList();
 }
 
 const onPurchaseButtonHandler = () => {
+  PurchasePopup.style.display = 'block';
   basketStorageList();
   localStorage.setItem('purchaseList', JSON.stringify(products));
 }
