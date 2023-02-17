@@ -6,16 +6,16 @@ const mainNavList = document.querySelector('.main-nav-list')
 
 const burgerButton = document.querySelector('.main-nav__mobile-button');
 
-$(function() {
-  $('.container-list--carousel').slick({
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    variableWidth: true,
-    prevArrow: false,
-    nextArrow: false,
-  });
-});
+// $(function() {
+//   $('.container-list--carousel').slick({
+//     infinite: true,
+//     slidesToShow: 2,
+//     slidesToScroll: 1,
+//     variableWidth: true,
+//     prevArrow: false,
+//     nextArrow: false,
+//   });
+// });
 
 const changeTextButton = (e) => {
   if (e.matches) {
