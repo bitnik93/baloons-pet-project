@@ -21,8 +21,8 @@ const js = () => {
             message: error.message
         }))
     }))
-    .pipe(babel())
-    .pipe(webpack(app.webpack))
+    // .pipe(babel())
+    // .pipe(webpack(app.webpack))
     .pipe(gulp.dest(path.js.dest, {sourcemaps: app.isDev}))
 }
 
