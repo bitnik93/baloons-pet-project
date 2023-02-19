@@ -1,4 +1,3 @@
-
 const mediaQuery = window.matchMedia('(max-width: 375px');
 const actionButton = document.querySelector('.event-container__button');
 const mainNavList = document.querySelector('.main-nav-list')
