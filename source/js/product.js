@@ -211,6 +211,7 @@ const onAddMoreOrLessProductCount = () => {
 // добавление продукта в localStorage
 const addProductInStorage = () => {
   addInputProduct.value = 1;
+  console.log(data[buttonsContainer.dataset.count])
   let addedProductArticle = data[buttonsContainer.dataset.count];
   addedProductArticle.count = Number(addInputProduct.value);
   localStorage.setItem(buttonsContainer.dataset.count, JSON.stringify(addedProductArticle));

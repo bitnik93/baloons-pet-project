@@ -11,15 +11,19 @@
 .store-nav-links-list__item {
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    color: @hover-color-grey;
+  }
 }
 
 .store-nav-links-list__work-hours {
   &:first-child {
-    font-size: 12px;
+    @fz12: 10px;
   }
 
   &:last-child {
-    font-size: 14px;
+    font-size: @fz14;
   }
 }
 
@@ -28,4 +32,14 @@
   font-weight: 600;
   color: rgb(0, 0, 0);
   position: relative;
+
+  &:hover {
+    color: @hover-color-grey;
+  }
+}
+
+.store-nav-links-list__img {
+  &:hover {
+    color: @hover-color-grey;
+  }
 }

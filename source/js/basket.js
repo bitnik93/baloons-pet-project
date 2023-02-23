@@ -1,4 +1,5 @@
 import isPopupTotal from './popup.js'
+import {PROCENT} from './data.js'
 // отрисовка товаров
   const template = document.querySelector('#basket-item').content;
   const TemplateItem = template.querySelector('.basket-list__item');
@@ -11,14 +12,13 @@ import isPopupTotal from './popup.js'
   const PurchasePopup = document.querySelector('.popup-container');
   const PurchaseButton = document.querySelector('.total-container__button');
 
-  const PROCENT = 0;
-
 
   let totalItemPrice = document.querySelector('.basket-list__price-item-total')
   let newTotalItemPrice = null;
   let newTotalItemsPositions  = null;
   let newTotalItemsProducts = null;
   let inputButtonCount = null;
+
 //общая стоимость продуктов
   let totalSum = document.querySelector('.total-container__sum');
 
@@ -52,15 +52,20 @@ isPopupTotal();
     newTemplateItem.querySelector('.basket-list__item-number').textContent = index + 1;
     newTemplateItem.querySelector('.basket-list__img').src = product.image;
     newTemplateItem.querySelector('.basket-list__item-count').value = product.count;
-    newTemplateItem.querySelector('.basket-list__item-procent').textContent = PROCENT + ' %';
+    console.log((PROCENT / 100) * product.price)
     newTemplateItem.querySelector('.basket-list__item-price').textContent = product.price - ((PROCENT / 100) * product.price);
-    newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price;
     newTemplateItem.querySelector('.basket-list__item-par').textContent = product.name;
     newTemplateItem.querySelector('.basket-list__item-code').textContent = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-minus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-plus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.count * (product.price - ((PROCENT / 100) * product.price));
     newTotalItemPrice += product.count * (product.price - ((PROCENT / 100) * product.price));
+
+    if (product.discount) {
+      newTemplateItem.querySelector('.basket-list__item-procent').textContent = PROCENT + ' %';
+      newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price;
+    }
+
     sumOrder.textContent = newTotalItemPrice + ' p';
     totalSum.textContent = newTotalItemPrice;
     newTotalItemsPositions += Number(product.count)

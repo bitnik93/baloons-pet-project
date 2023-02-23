@@ -1,7 +1,22 @@
+@main-color: #f188f2;
+
 @main-text: #fff;
 @main-text-size: 16px;
 
-.font-size(@fs) {
+@fz10: 10px;
+@fz12: 12px;
+@fz14: 14px;
+@fz16: 16px;
+@fz18: 18px;
+@fz20: 20px;
+@fz24: 24px;
+@fz26: 26px;
+@fz28: 28px;
+@fz40: 40px;
+
+@hover-color-grey: #7c7c7c;
+
+.font-size(@fs, @mc: @main-text) {
   font-size: @fs;
-  color: @main-text;
+  color: @mc;
 }

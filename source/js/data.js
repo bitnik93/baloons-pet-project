@@ -1,6 +1,6 @@
-  const data = {
-    'baloons1' : {
-        name : 'baloons1',
+  export const data = {
+    'baloons-1' : {
+        name : 'baloons-1',
         url : '#',
         image : 'img/top-seller-img-1.jpg',
         price: 1000,
@@ -15,8 +15,8 @@
             'img/top-seller-img-1-small-5.jpg',
         ]
     },
-    'baloons2' : {
-        name : 'baloons2',
+    'baloons-2' : {
+        name : 'baloons-2',
         url : '#',
         image : 'img/top-seller-img-2.jpg',
         price: 1500,
@@ -31,8 +31,8 @@
             'img/top-seller-img-2-small-5.jpg',
         ]
     },
-    'baloons3' : {
-        name : 'baloons3',
+    'baloons-3' : {
+        name : 'baloons-3',
         url : '#',
         image : 'img/top-seller-img-3.jpg',
         price: 2000,
@@ -47,8 +47,8 @@
           'img/top-seller-img-3-small-5.jpg',
       ]
     },
-    'baloons4' : {
-        name : 'baloons4',
+    'baloons-4' : {
+        name : 'baloons-4',
         url : '#',
         image : 'img/top-seller-img-4.jpg',
         price: 2500,
@@ -63,8 +63,8 @@
           'img/top-seller-img-4-small-5.jpg',
       ]
     },
-    'baloons5' : {
-        name : 'baloons5',
+    'baloons-5' : {
+        name : 'baloons-5',
         url : '#',
         image : 'img/top-seller-img-5.jpg',
         price: 3000,
@@ -79,8 +79,8 @@
           'img/top-seller-img-5-small-5.jpg',
       ]
     },
-    'baloons6' : {
-        name : 'baloons6',
+    'baloons-6' : {
+        name : 'baloons-6',
         url : '#',
         image : 'img/stocks-img-1.jpg',
         price: 3500,
@@ -95,8 +95,8 @@
           'img/stocks-img-1-small-5.jpg',
       ]
     },
-    'baloons7' : {
-        name : 'baloons7',
+    'baloons-7' : {
+        name : 'baloons-7',
         url : '#',
         image : 'img/stocks-img-2.jpg',
         price: 4000,
@@ -111,8 +111,8 @@
           'img/stocks-img-2-small-5.jpg',
       ]
     },
-    'baloons8' : {
-        name : 'baloons8',
+    'baloons-8' : {
+        name : 'baloons-8',
         url : '#',
         image : 'img/stocks-img-3.jpg',
         price: 4500,
@@ -127,8 +127,8 @@
           'img/stocks-img-3-small-5.jpg',
       ]
     },
-    'baloons9' : {
-        name : 'baloons9',
+    'baloons-9' : {
+        name : 'baloons-9',
         url : '#',
         image : 'img/stocks-img-4.jpg',
         price: 5000,
@@ -143,8 +143,8 @@
           'img/stocks-img-4-small-5.jpg',
       ]
     },
-    'baloons10' : {
-        name : 'baloons10',
+    'baloons-10' : {
+        name : 'baloons-10',
         url : '#',
         image : 'img/stocks-img-5.jpg',
         price: 5500,
@@ -161,5 +161,6 @@
     }
   }
 
+  export const PROCENT = 23;
 
 export default data;

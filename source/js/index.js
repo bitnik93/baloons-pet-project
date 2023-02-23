@@ -1,4 +1,5 @@
 import data from './data.js'
+import {PROCENT} from './data.js'
 const mediaQuery = window.matchMedia('(max-width: 375px');
 const actionButton = document.querySelector('.event-container__button');
 const mainNavList = document.querySelector('.main-nav-list')
@@ -215,8 +216,6 @@ const leadersItems = leadersList.querySelectorAll('.container-list__item');
 const promotionList = document.querySelector('.promotion-list');
 const promotionItems = promotionList.querySelectorAll('.container-list__item');
 
-// PROCENT
-const PROCENT = 23;
 
 // productInfoData
 let productInfo;
@@ -239,14 +238,14 @@ const priceAndDescItemsFn = (items, data) => {
     const oldPrice = item.querySelector('.container-list__old-price');
     const procent = item.querySelector('.container-list__procent');
     const desc = item.querySelector('.container-list__desc');
-      newPrice.textContent = data[article].price - (data[article].price * (PROCENT / 100));
-      oldPrice.textContent = data[article].price;
+      newPrice.textContent = data[article].price - (data[article].price * (PROCENT / 100))  + 'p';
+      oldPrice.textContent = data[article].price  + 'p';
     if (data[article].discount) {
-      newPrice.textContent = data[article].price - (data[article].price * (PROCENT / 100));
+      newPrice.textContent = data[article].price - (data[article].price * (PROCENT / 100)) + 'p';
       procent.textContent = PROCENT + ' %';
       procent.style.display = 'flex';
     } else {
-      newPrice.textContent = data[article].price;
+      newPrice.textContent = data[article].price  + 'p';
       procent.style.display = 'none';
       oldPrice.style.display = 'none';
     }
