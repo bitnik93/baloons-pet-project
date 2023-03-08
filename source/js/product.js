@@ -42,43 +42,6 @@ const plusButton = pageContainer.querySelector('.basket-list__item-button-plus')
 let chosenProduct = localStorage.getItem('productData');
 let productData = JSON.parse(chosenProduct);
 
-
-// прокрутка маленьких фото
-  $(function() {
-    $('.product-page__list').slick({
-      centerMode: true,
-      cssEase: 'linear',
-      infinite: true,
-      slidesToShow: 1,
-      variableWidth: true,
-      prevArrow: false,
-      nextArrow: false,
-      mobileFirst: true,
-      responsive : [
-        {
-          breakpoint: 376,
-          settings: "unslick"
-        }
-      ]
-    });
-  });
-
-
-// const queryChangeSlickSlider = () => {
-//   window.addEventListener("resize", function() {
-//     if (window.innerWidth <= 768) {
-//       $('.product-page__list').slick('unslick');
-//       sliderIsLive = false;
-//     }
-//     else {
-//       if (sliderIsLive) {
-//         $('.product-page__list').slick();
-//         sliderIsLive = true;
-//       }
-//     }
-//   });
-// }
-// queryChangeSlickSlider()
 const PROCENT = 23;
 // функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
@@ -115,28 +78,28 @@ const productPage = (product) => {
     productBigPhoto.src = product.image;
     productTitle.textContent = product.name;
     productPrice.textContent = product.price;
+    const productRubleSign = document.createElement('span');
+    productRubleSign.textContent = 'p'
     if (product.discount) {
       productPrice.textContent = product.price - ((PROCENT / 100) * product.price)
       productProcent.textContent = PROCENT + ' %';
       productProcent.style.display = 'flex';
+      productPrice.appendChild(productRubleSign)
     } else {
       productPrice.textContent = product.price;
       productProcent.style.display = 'none';
       productOldPrice.style.display = 'none';
+      productPrice.appendChild(productRubleSign)
     }
     productArticle.textContent = 'Артикул ' + product.code;
     const productKeys = productData.smallPhoto;
     productSmallPhotos.forEach((smallphoto, id) => {
             smallphoto.src = productKeys[id];
     })
-    // if (mob) {
-    //   productSmallPhotos.forEach((smallPhoto) => {
-    //     smallPhoto.style.width = '250px';
-    //     smallPhoto.style.height = '301px';
-    //   })
-    // }
 }
 productPage(productData);
+
+
 
 // функция скрытия кнопки и показа счетиков добавления товара
 
@@ -235,7 +198,34 @@ productBigPhoto.src = smallPhoto.src
 smallPhoto.classList.add('product-page__item--active')
 }
 
-productSmallPhotosList.addEventListener('click', productPageListHandler)
+productSmallPhotosList.addEventListener('click', productPageListHandler);
+
+// прокрутка маленьких фото
+$(function() {
+  let $slickList = $('.product-page__list');
+  let settings = {
+    centerMode: true,
+    cssEase: 'linear',
+    infinite: true,
+    slidesToShow: 1,
+    variableWidth: true,
+    prevArrow: false,
+    nextArrow: false,
+    mobileFirst: true,
+  }
+
+  $(window).on('resize', function () {
+    if($(window).width() > 369) {
+      if ($slickList.hasClass('slick-initialized')) {
+        $slickList.slick('unslick')
+      }
+      return
+    }
+    if(!$slickList.hasClass('slick-initialized')) {
+      return $slickList.slick(settings);
+    }
+  })
+});
 
 
 
