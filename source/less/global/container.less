@@ -58,6 +58,11 @@
   }
 }
 
+.container-list__item {
+  display: flex;
+  justify-content: center;
+}
+
 .container-list--carousel {
   @media (max-width: @mobile-width) {
     display: flex;
@@ -78,6 +83,13 @@
   @media (max-width: 375px) {
     margin-right: 0;
     margin-bottom: 15px;
+  }
+}
+
+.container-list__item-our-works {
+  &:hover {
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
   }
 }
 
