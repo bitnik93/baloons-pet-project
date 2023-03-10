@@ -19,3 +19,5 @@ const isPopupTotal = () => {
 
 isPopupTotal();
 
+export default isPopupTotal;
+

@@ -1,167 +1,5 @@
-if (window.location.pathname === '/compositions.html') {
-  const data = {
-    'baloons1' : {
-        name : 'baloons1',
-        url : '#',
-        image : 'img/top-seller-img-1.jpg',
-        price: 1000,
-        code: 378394,
-        count: 0,
-        discount: true,
-        smallPhoto: [
-            'img/top-seller-img-1-small-1.jpg',
-            'img/top-seller-img-1-small-2.jpg',
-            'img/top-seller-img-1-small-3.jpg',
-            'img/top-seller-img-1-small-4.jpg',
-            'img/top-seller-img-1-small-5.jpg',
-        ]
-    },
-    'baloons2' : {
-        name : 'baloons2',
-        url : '#',
-        image : 'img/top-seller-img-2.jpg',
-        price: 1500,
-        count: 0,
-        code: 367277,
-        discount: false,
-        smallPhoto: [
-            'img/top-seller-img-2-small-1.jpg',
-            'img/top-seller-img-2-small-2.jpg',
-            'img/top-seller-img-2-small-3.jpg',
-            'img/top-seller-img-2-small-4.jpg',
-            'img/top-seller-img-2-small-5.jpg',
-        ]
-    },
-    'baloons3' : {
-        name : 'baloons3',
-        url : '#',
-        image : 'img/top-seller-img-3.jpg',
-        price: 2000,
-        discount: false,
-        count: 0,
-        code: 389009,
-        smallPhoto: [
-          'img/top-seller-img-3-small-1.jpg',
-          'img/top-seller-img-3-small-2.jpg',
-          'img/top-seller-img-3-small-3.jpg',
-          'img/top-seller-img-3-small-4.jpg',
-          'img/top-seller-img-3-small-5.jpg',
-      ]
-    },
-    'baloons4' : {
-        name : 'baloons4',
-        url : '#',
-        image : 'img/top-seller-img-4.jpg',
-        price: 2500,
-        discount: true,
-        count: 0,
-        code: 367288,
-        smallPhoto: [
-          'img/top-seller-img-4-small-1.jpg',
-          'img/top-seller-img-4-small-2.jpg',
-          'img/top-seller-img-4-small-3.jpg',
-          'img/top-seller-img-4-small-4.jpg',
-          'img/top-seller-img-4-small-5.jpg',
-      ]
-    },
-    'baloons5' : {
-        name : 'baloons5',
-        url : '#',
-        image : 'img/top-seller-img-5.jpg',
-        price: 3000,
-        discount: false,
-        count: 0,
-        code: 267683,
-        smallPhoto: [
-          'img/top-seller-img-5-small-1.jpg',
-          'img/top-seller-img-5-small-2.jpg',
-          'img/top-seller-img-5-small-3.jpg',
-          'img/top-seller-img-5-small-4.jpg',
-          'img/top-seller-img-5-small-5.jpg',
-      ]
-    },
-    'baloons6' : {
-        name : 'baloons6',
-        url : '#',
-        image : 'img/stocks-img-1.jpg',
-        price: 3500,
-        discount: false,
-        count: 0,
-        code: 478973,
-        smallPhoto: [
-          'img/stocks-img-1-small-1.jpg',
-          'img/stocks-img-1-small-2.jpg',
-          'img/stocks-img-1-small-3.jpg',
-          'img/stocks-img-1-small-4.jpg',
-          'img/stocks-img-1-small-5.jpg',
-      ]
-    },
-    'baloons7' : {
-        name : 'baloons7',
-        url : '#',
-        image : 'img/stocks-img-2.jpg',
-        price: 4000,
-        discount: false,
-        count: 0,
-        code: 843997,
-        smallPhoto: [
-          'img/stocks-img-2-small-1.jpg',
-          'img/stocks-img-2-small-2.jpg',
-          'img/stocks-img-2-small-3.jpg',
-          'img/stocks-img-2-small-4.jpg',
-          'img/stocks-img-2-small-5.jpg',
-      ]
-    },
-    'baloons8' : {
-        name : 'baloons8',
-        url : '#',
-        image : 'img/stocks-img-3.jpg',
-        price: 4500,
-        discount: true,
-        count: 0,
-        code: 478999,
-        smallPhoto: [
-          'img/stocks-img-3-small-1.jpg',
-          'img/stocks-img-3-small-2.jpg',
-          'img/stocks-img-3-small-3.jpg',
-          'img/stocks-img-3-small-4.jpg',
-          'img/stocks-img-3-small-5.jpg',
-      ]
-    },
-    'baloons9' : {
-        name : 'baloons9',
-        url : '#',
-        image : 'img/stocks-img-4.jpg',
-        price: 5000,
-        discount: true,
-        count: 0,
-        code: 393373,
-        smallPhoto: [
-          'img/stocks-img-4-small-1.jpg',
-          'img/stocks-img-4-small-2.jpg',
-          'img/stocks-img-4-small-3.jpg',
-          'img/stocks-img-4-small-4.jpg',
-          'img/stocks-img-4-small-5.jpg',
-      ]
-    },
-    'baloons10' : {
-        name : 'baloons10',
-        url : '#',
-        image : 'img/stocks-img-5.jpg',
-        price: 5500,
-        discount: false,
-        count: 0,
-        code: 392923,
-        smallPhoto: [
-          'img/stocks-img-5-small-1.jpg',
-          'img/stocks-img-5-small-2.jpg',
-          'img/stocks-img-5-small-3.jpg',
-          'img/stocks-img-5-small-4.jpg',
-          'img/stocks-img-5-small-5.jpg',
-      ]
-    }
-  }
-
+import data from './data.js'
+import {PROCENT} from './data.js'
 const compositionsList = document.querySelector('.container__compositions-list') || undefined;
 const compositionsProducts = Array.from(compositionsList.children);
 const composition = compositionsList.children;
@@ -169,6 +7,7 @@ const compositionItems = document.querySelectorAll('.container-list__item ');
 const compositionInputPriceOff = document.querySelector('.container__price-input-off');
 const compositionsPrices = document.querySelectorAll('.container-list__price');
 const containerPriceSection = document.querySelector('.container__price-section')
+const containerListPriceWrapper = document.querySelector('.container-list__price-wrapper');
 // инпуты от и до
 const priceWrapper = document.querySelector('.container__price-wrapper')
 const inputFrom = document.querySelector('.container__price-input-from')
@@ -176,7 +15,7 @@ const inputTo = document.querySelector('.container__price-input-to')
 
 // элемент скидки на товары
 const procentItem = document.querySelector('.container-list__procent');
-const PROCENT = 23;
+// const PROCENT = 23;
 
 
 // select container
@@ -186,7 +25,7 @@ const selectOptions = document.querySelector('.container__price-select');
 
 
 // отрисовка товаров
-const compositionPricesList = () => {
+const compositionPricesList = (data) => {
         compositionsProducts.forEach((elem) => {
             const compositionitem = elem.dataset.article;
             elem.dataset.discount = data[compositionitem].discount;
@@ -195,41 +34,51 @@ const compositionPricesList = () => {
             const compositionTitle = elem.querySelector('.container-list__desc');
             const compositionProcent = elem.querySelector('.container-list__procent');
             const procentItemSign = elem.querySelector('.container-list__procent-sign');
+            const compositionPriceRuble = elem.querySelector('.container-list__price-ruble');
+            const compositionLinkContainer = elem.querySelector('.container-list__link-container');
             compositionTitle.textContent = data[compositionitem].name
             compositionOldPrice.textContent = data[compositionitem].price;
             if (data[compositionitem].discount) {
+              const actionContainer = document.createElement('div');
+              actionContainer.textContent = '%'
+              actionContainer.classList.add('container-list__link--price-off');
+              compositionLinkContainer.appendChild(actionContainer);
               procentItemSign.style.display = 'flex';
               compositionProcent.textContent = PROCENT;
               compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price);
+              compositionPrice.insertAdjacentHTML('afterend', '<span class="container-list__price-ruble">&nbspp</span>');
+              console.log(compositionPrice.textContent)
+              compositionOldPrice.insertAdjacentHTML('afterend', '<span class="container-list__price-ruble">&nbspp</span>');
             }
               else {
                 procentItemSign.style.display = 'none';
                 compositionProcent.style.display = 'none';
               compositionOldPrice.style.display = 'none';
               compositionPrice.textContent = data[compositionitem].price;
+              compositionPrice.insertAdjacentHTML('afterend', '<span class="container-list__price-ruble">&nbspp</span>');
             }
             elem.style.display = 'flex';
         });
 }
 
-compositionPricesList()
+compositionPricesList(data)
 
 
-containerPriceSection.addEventListener('change', () => {
+containerPriceSection.addEventListener('click', () => {
   const productPriceOff = document.querySelector('.container__price-input-off');
   compositionsProducts.filter((product) => {
-    const productPriceOffItem = product.querySelector('.container-list__procent');
     const compositionPrice = Number(product.querySelector('.container-list__price').textContent);
     const compositionProcent = product.dataset.discount;
-    console.log(compositionPrice)
+    console.log(product)
     product.style.display = 'none';
     if ((compositionPrice >= inputFrom.value) && !inputTo.value && !productPriceOff.checked) {
       product.style.display = 'flex';
-      console.log('только больше')
+      // console.log('только больше')
+        console.log(product)
     }
     else if (compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked) {
       product.style.display = 'flex';
-      console.log('только меньше')
+      // console.log('только меньше')
     }
     else if(!productPriceOff.checked && compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value) {
       product.style.display = 'flex';
@@ -290,7 +139,7 @@ const onClickHandler = function (evt) {
 }
 
 compositionsList && compositionsList.addEventListener('click', onClickHandler);
-}
+
 
 
 

@@ -1,121 +1,4 @@
-if (window.location.pathname === '/product.html') {
-  // моковые данные
-  const data = {
-    'baloons1' : {
-        name : 'baloons1',
-        url : '#',
-        image : 'img/top-seller-img-1.jpg',
-        price: 1000,
-        code: 378394,
-        count: 0,
-        discount: true,
-        smallPhoto: [
-            'img/top-seller-img-1-small-1.jpg',
-            'img/top-seller-img-1-small-2.jpg',
-            'img/top-seller-img-1-small-3.jpg',
-            'img/top-seller-img-1-small-4.jpg',
-            'img/top-seller-img-1-small-5.jpg',
-        ]
-    },
-    'baloons2' : {
-        name : 'baloons2',
-        url : '#',
-        image : 'img/top-seller-img-2.jpg',
-        price: 1500,
-        count: 0,
-        code: 367277,
-        discount: false,
-        smallPhoto: [
-            'img/top-seller-img-2-small-1.jpg',
-            'img/top-seller-img-2-small-2.jpg',
-            'img/top-seller-img-2-small-3.jpg',
-            'img/top-seller-img-2-small-4.jpg',
-            'img/top-seller-img-2-small-5.jpg',
-        ]
-    },
-    'baloons3' : {
-        name : 'baloons3',
-        url : '#',
-        image : 'img/top-seller-img-3.jpg',
-        price: 2000,
-        discount: false,
-        count: 0,
-        code: 389009,
-        smallPhoto: [
-          'img/top-seller-img-3-small-1.jpg',
-          'img/top-seller-img-3-small-2.jpg',
-          'img/top-seller-img-3-small-3.jpg',
-          'img/top-seller-img-3-small-4.jpg',
-          'img/top-seller-img-3-small-5.jpg',
-      ]
-    },
-    'baloons4' : {
-        name : 'baloons4',
-        url : '#',
-        image : 'img/top-seller-img-4.jpg',
-        price: 2500,
-        discount: true,
-        count: 0,
-        code: 367288
-    },
-    'baloons5' : {
-        name : 'baloons5',
-        url : '#',
-        image : 'img/top-seller-img-5.jpg',
-        price: 3000,
-        discount: false,
-        count: 0,
-        code: 267683
-    },
-    'baloons6' : {
-        name : 'baloons6',
-        url : '#',
-        image : 'img/top-seller-img-1.jpg',
-        price: 3500,
-        discount: false,
-        count: 0,
-        code: 478973
-    },
-    'baloons7' : {
-        name : 'baloons7',
-        url : '#',
-        image : 'img/top-seller-img-2.jpg',
-        price: 4000,
-        discount: false,
-        count: 0,
-        code: 843997
-    },
-    'baloons8' : {
-        name : 'baloons8',
-        url : '#',
-        image : 'img/top-seller-img-3.jpg',
-        price: 4500,
-        discount: true,
-        count: 0,
-        code: 478999
-    },
-    'baloons9' : {
-        name : 'baloons9',
-        url : '#',
-        image : 'img/top-seller-img-4.jpg',
-        price: 5000,
-        discount: true,
-        count: 0,
-        code: 393373
-    },
-    'baloons10' : {
-        name : 'baloons10',
-        url : '#',
-        image : 'img/top-seller-img-5.jpg',
-        price: 5500,
-        discount: false,
-        count: 0,
-        code: 392923
-    }
-  }
-
-
-
+import data from './data.js'
 // название товара
 const productName = document.querySelector('.container__article');
 // контейнер продукта
@@ -159,43 +42,6 @@ const plusButton = pageContainer.querySelector('.basket-list__item-button-plus')
 let chosenProduct = localStorage.getItem('productData');
 let productData = JSON.parse(chosenProduct);
 
-
-// прокрутка маленьких фото
-  $(function() {
-    $('.product-page__list').slick({
-      centerMode: true,
-      cssEase: 'linear',
-      infinite: true,
-      slidesToShow: 1,
-      variableWidth: true,
-      prevArrow: false,
-      nextArrow: false,
-      mobileFirst: true,
-      responsive : [
-        {
-          breakpoint: 376,
-          settings: "unslick"
-        }
-      ]
-    });
-  });
-
-
-// const queryChangeSlickSlider = () => {
-//   window.addEventListener("resize", function() {
-//     if (window.innerWidth <= 768) {
-//       $('.product-page__list').slick('unslick');
-//       sliderIsLive = false;
-//     }
-//     else {
-//       if (sliderIsLive) {
-//         $('.product-page__list').slick();
-//         sliderIsLive = true;
-//       }
-//     }
-//   });
-// }
-// queryChangeSlickSlider()
 const PROCENT = 23;
 // функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
@@ -232,28 +78,28 @@ const productPage = (product) => {
     productBigPhoto.src = product.image;
     productTitle.textContent = product.name;
     productPrice.textContent = product.price;
+    const productRubleSign = document.createElement('span');
+    productRubleSign.textContent = 'p'
     if (product.discount) {
       productPrice.textContent = product.price - ((PROCENT / 100) * product.price)
       productProcent.textContent = PROCENT + ' %';
       productProcent.style.display = 'flex';
+      productPrice.appendChild(productRubleSign)
     } else {
       productPrice.textContent = product.price;
       productProcent.style.display = 'none';
       productOldPrice.style.display = 'none';
+      productPrice.appendChild(productRubleSign)
     }
     productArticle.textContent = 'Артикул ' + product.code;
     const productKeys = productData.smallPhoto;
     productSmallPhotos.forEach((smallphoto, id) => {
             smallphoto.src = productKeys[id];
     })
-    // if (mob) {
-    //   productSmallPhotos.forEach((smallPhoto) => {
-    //     smallPhoto.style.width = '250px';
-    //     smallPhoto.style.height = '301px';
-    //   })
-    // }
 }
 productPage(productData);
+
+
 
 // функция скрытия кнопки и показа счетиков добавления товара
 
@@ -328,6 +174,7 @@ const onAddMoreOrLessProductCount = () => {
 // добавление продукта в localStorage
 const addProductInStorage = () => {
   addInputProduct.value = 1;
+  console.log(data[buttonsContainer.dataset.count])
   let addedProductArticle = data[buttonsContainer.dataset.count];
   addedProductArticle.count = Number(addInputProduct.value);
   localStorage.setItem(buttonsContainer.dataset.count, JSON.stringify(addedProductArticle));
@@ -351,8 +198,35 @@ productBigPhoto.src = smallPhoto.src
 smallPhoto.classList.add('product-page__item--active')
 }
 
-productSmallPhotosList.addEventListener('click', productPageListHandler)
-}
+productSmallPhotosList.addEventListener('click', productPageListHandler);
+
+// прокрутка маленьких фото
+$(function() {
+  let $slickList = $('.product-page__list');
+  let settings = {
+    centerMode: true,
+    cssEase: 'linear',
+    infinite: true,
+    slidesToShow: 1,
+    variableWidth: true,
+    prevArrow: false,
+    nextArrow: false,
+    mobileFirst: true,
+  }
+
+  $(window).on('resize', function () {
+    if($(window).width() > 369) {
+      if ($slickList.hasClass('slick-initialized')) {
+        $slickList.slick('unslick')
+      }
+      return
+    }
+    if(!$slickList.hasClass('slick-initialized')) {
+      return $slickList.slick(settings);
+    }
+  })
+});
+
 
 
 

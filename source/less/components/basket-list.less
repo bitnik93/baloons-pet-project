@@ -32,7 +32,7 @@
 }
 
 .basket-list__item-img-cont {
-  font-size: 16px;
+  font-size: @fz16;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -56,11 +56,11 @@
 
 
 .basket-list__price-item-total {
-  font-size: 40px;
+  font-size: @fz40;
   font-weight: 600;
 
   @media (max-width: @mobile-width) {
-    font-size: 20px;
+    font-size: @fz20;
   }
 }
 
@@ -91,53 +91,54 @@
 }
 
 .basket-list__item-price {
-  font-size: 24px;
+  @fz24: 24px;
   font-weight: 600;
 
   @media (max-width: @mobile-width) {
-    font-size: 18px;
+    font-size: @fz18;
   }
 }
 
 .basket-list__item-old-price {
   color: #8b8b8b;
-  font-size: 16px;
+  font-size: @fz16;
   font-weight: 500;
   margin-left: 20px;
 
   @media (max-width: @mobile-width) {
-    font-size: 10px;
+    @fz10: 10px;
   }
 }
 
 .basket-list__item-par {
   color: #3a3a3a;
-  font-size: 16px;
+  font-size: @fz16;
   font-weight: 600;
+  width: 100%;
 
   @media (max-width: @mobile-width) {
     grid-column: -1 / 1;
-    font-size: 18px;
+    font-size: @fz18;
   }
 }
 
 .basket-list__item-article {
-  font-size: 14px;
+  font-size: @fz14;
   font-weight: 500;
   color: #888888;
 
   @media (max-width: @mobile-width) {
-    font-size: 10px;
+    @fz10: 10px;
   }
 }
 
 .basket-list__item-code {
-  font-size: 14px;
+  font-size: @fz14;
   font-weight: 500;
   margin-left: 20px;
 
   @media (max-width: @mobile-width) {
-    font-size: 10px;
+    @fz10: 10px;
   }
 }
 
@@ -159,7 +160,7 @@
   width: 50px;
   box-sizing: border-box;
   border: none;
-  font-size: 24px;
+  @fz24: 24px;
   font-weight: 600;
   text-align: center;
 }
@@ -190,9 +191,11 @@
 
 .basket-list__item-procent {
   color: #c949ca;
+  margin-left: 5px;
 
   @media (max-width: @mobile-width) {
-    font-size: 10px;
+    margin-left: 0;
+    @fz10: 10px;
   }
 }
 

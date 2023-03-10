@@ -21,7 +21,7 @@
   font-weight: 600;
 
   @media (max-width: @mobile-width) {
-    font-size: 28px;
+    font-size: @fz28;
   }
 }
 
@@ -32,7 +32,7 @@
   align-items: center;
 
   @media (max-width: @mobile-width) {
-    font-size: 18px;
+    font-size: @fz18;
   }
 }
 
@@ -50,7 +50,7 @@
 }
 
 .total-container__count-product {
-  font-size: 24px;
+  @fz24: 24px;
   font-weight: 600;
   color: #b3b3b3;
 
@@ -59,7 +59,7 @@
   }
 
   @media (max-width: @mobile-width) {
-    font-size: 18px;
+    font-size: @fz18;
   }
 
   &:nth-child(2) {
@@ -75,12 +75,12 @@
 
 
 .total-container__count-desc {
-  font-size: 18px;
+  font-size: @fz18;
   font-weight: 500;
 }
 
 .total-container__info {
-  font-size: 18px;
+  font-size: @fz18;
   font-weight: 500;
 
   &:not(:last-child) {
@@ -89,12 +89,12 @@
 }
 
 .total-container__info-sum {
-  font-size: 24px;
+  @fz24: 24px;
   font-weight: 600;
   margin-left: 30px;
 
   @media (max-width: @mobile-width) {
-    font-size: 18px;
+    font-size: @fz18;
   }
 }
 
@@ -142,7 +142,7 @@
   min-height: 55px;
   border-radius: 7px;
   color: #ffffff;
-  font-size: 24px;
+  @fz24: 24px;
   font-weight: 600;
   background-color: #c949ca;
 }
@@ -154,6 +154,6 @@
   font-size: 29px;
 
   @media (max-width: @mobile-width) {
-    font-size: 18px;
+    font-size: @fz18;
   }
 }

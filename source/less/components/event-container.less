@@ -50,11 +50,11 @@
 
   @media (max-width: 375px) {
     &:first-child {
-      font-size: 28px;
+      font-size: @fz28;
     }
 
     &:nth-child(2) {
-      font-size: 18px;
+      font-size: @fz18;
     }
   }
 }
@@ -78,13 +78,14 @@
 
   @media (max-width: @mobile-width) {
     align-self: center;
-    font-size: 16px;
+    font-size: @fz16;
     min-width: 133px;
     min-height: 41px;
   }
 
   &:hover {
-    border: 2px solid #2d2d2d;
+    color: #ffffff;
+    background-color: @main-color;
   }
 }
 
@@ -98,7 +99,7 @@
 
   &:hover {
     background-color: #ffffff;
-    color: #2d2d2d;
+    color: @main-color;
   }
 }
 
