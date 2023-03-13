@@ -9,7 +9,7 @@ import {PROCENT} from './data.js'
   const sumOrder = document.querySelector('.total-container__info-sum');
 
   // кнопка Заказать
-  const PurchasePopup = document.querySelector('.popup-container');
+  const PurchasePopup = document.querySelector('.success-popup-container');
   const PurchaseButton = document.querySelector('.total-container__button');
 
 //корзина

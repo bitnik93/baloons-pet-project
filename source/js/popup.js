@@ -1,5 +1,5 @@
-const popup = document.querySelector('.popup-container');
-const popupButton = document.querySelector('.popup__button');
+const popup = document.querySelector('.success-popup-container');
+const popupButton = document.querySelector('.success-popup__button');
 const purchaseButton = document.querySelector('.total-container__button');
 
 const onClosePopup = () => {
