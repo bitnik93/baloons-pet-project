@@ -17,7 +17,7 @@ const TotalContainerDesc = document.querySelector('.total-container__desc');
 
 
   let totalItemPrice = document.querySelector('.basket-list__price-item-total')
-  let newTotalItemPrice = null;
+  // let newTotalItemPrice = null;
   let newTotalItemsPositions  = null;
   let newTotalItemsProducts = null;
   let inputButtonCount = null;
@@ -59,6 +59,8 @@ const basketStorage = basketStorageList(products);
 isPopupTotal();
 
 // Отрисовка списка корзины товаров
+const ProductsRender = (products) => {
+  let newTotalItemPrice = null;
   products && products.forEach((product, index) => {
     const newTemplateItem = TemplateItem.cloneNode(true);
     newTemplateItem.dataset.id = product.name;
@@ -72,7 +74,6 @@ isPopupTotal();
     newTemplateItem.querySelector('.basket-list__item-button-plus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__price-item-total').textContent = product.count * (product.price - ((PROCENT / 100) * product.price));
     newTotalItemPrice += product.count * (product.price - ((PROCENT / 100) * product.price));
-
     if (product.discount) {
       newTemplateItem.querySelector('.basket-list__item-procent').textContent = PROCENT + ' %';
       newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price;
@@ -90,8 +91,8 @@ isPopupTotal();
   // const onTotalCountSumProducts = () => {
   //   const sumProductsCount =
   // }
-
-
+}
+ProductsRender(products)
 
 // функция ввода колличества каждого товара
   const onInputButtonCount = (evt) => {
@@ -115,6 +116,7 @@ isPopupTotal();
 
 // функция уменьшения колличества товара
   const onMinusCount = function (evt)  {
+    let newTotalItemPrice = null;
     const newBasketButtonMinus = evt.target.closest('.basket-list__item-button-minus');
       if (newBasketButtonMinus) {
         const newBasketItem = evt.target.closest('li')
@@ -123,12 +125,12 @@ isPopupTotal();
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
         newBasketCount.value--;
         basketStorageId.count--;
-        newTotalItemPrice -= (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
-        totalSum.textContent = newTotalItemPrice;
-        sumOrder.textContent = newTotalItemPrice;
+        newTotalItemPrice = (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
+        totalSum.textContent = Number(totalSum.textContent) -  newTotalItemPrice;
+        sumOrder.textContent = Number(sumOrder.textContent) -  newTotalItemPrice;
         newBasketItemPrice.innerHTML = basketStorageId.count * (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
-        // localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+        localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
           const newFilteredCountProducts = localStorageKeys(localStorage)
           const changedProducts = productsList(newFilteredCountProducts)
           const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
@@ -144,23 +146,22 @@ isPopupTotal();
 
 // функция увеличение колличества товара
   const onPlusCount = function (evt) {
-    console.log(newTotalItemPrice)
+    let newTotalItemPrice = null;
     const newBasketButtonPlus = evt.target.closest('.basket-list__item-button-plus');
       if (newBasketButtonPlus) {
-
         const newBasketItem = evt.target.closest('li');
         const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
         const basketStorageId = basketStorage[newBasketItem.dataset.id];
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
-        console.log(newBasketItemPrice, 'lijkh')
         newBasketCount.value++;
         basketStorageId.count++;
-        newTotalItemPrice += (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
-        totalSum.textContent = newTotalItemPrice;
-        sumOrder.textContent = newTotalItemPrice;
+        newTotalItemPrice = (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
+        console.log(newTotalItemPrice )
+        totalSum.textContent = Number(totalSum.textContent) + newTotalItemPrice;
+        sumOrder.textContent = Number(sumOrder.textContent) + newTotalItemPrice;
         newBasketItemPrice.innerHTML = basketStorageId.count * (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
-        // localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+        localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
         const newFilteredCountProducts = localStorageKeys(localStorage)
         const changedProducts = productsList(newFilteredCountProducts)
         const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
@@ -176,31 +177,18 @@ const onDeleteProduct = (evt) => {
   let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
 
   if(newBasketButtonCancel) {
-    // console.log(basketStorageId)
-// console.log(basketStorageId)
         newBasketItem.remove();
-        // console.log(Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent),sumOrder.textContent, newBasketItemPrice.textContent,'delete')
-        const orderMinusProduct = Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent)
-        // console.log(sumOrder.textContent, orderMinusProduct)
         totalSum.textContent = Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent)
       sumOrder.textContent= Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent)
-      // console.log(sumOrder.textContent)
-      console.log(newTotalItemPrice)
 
-
-
-
-    localStorage.removeItem(basketStorageId);/// добавить name
+    localStorage.removeItem(basketStorageId.name);/// добавить name
     newBasketItem.remove();
     const newFilteredCountProducts = localStorageKeys(localStorage)
+
     const changedProducts = productsList(newFilteredCountProducts)
-    // console.log(sumOrder.textContent, 'до')
+    // // console.log(sumOrder.textContent, 'до')
     const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
-    newTotalItemsPositions = Number(totalSum.textContent) -basketStorageId.price * basketStorageId.count
-    totalSum.textContent = newTotalItemsPositions;
-    sumOrder.textContent = newTotalItemsPositions;
-    // console.log(sumOrder.textContent, 'после')
-    // console.log(Number(totalSum.textContent) - basketStorage[basketStorageId].price * basketStorage[basketStorageId].count)
+    console.log(changedTotalItemsProducts)
     basketPositions.textContent = changedTotalItemsProducts;
     basketProducts.textContent = localStorageKeys(localStorage).length
   }
