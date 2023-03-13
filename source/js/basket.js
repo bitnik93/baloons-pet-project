@@ -78,7 +78,7 @@ isPopupTotal();
       newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price;
     }
 
-    sumOrder.textContent = newTotalItemPrice + ' p';
+    sumOrder.textContent = newTotalItemPrice;
     totalSum.textContent = newTotalItemPrice;
     newTotalItemsPositions += Number(product.count)
     basketProducts.textContent = products.length;
@@ -107,7 +107,7 @@ isPopupTotal();
       const basketInputs = document.querySelectorAll('.basket-list__item-count');
       const totalSumProducts = products.reduce((total, product) => total + (product.count *  (product.price - (PROCENT / 100 * product.price))),0);
       totalSum.textContent = totalSumProducts;
-      sumOrder.textContent =  totalSumProducts + ' p';
+      sumOrder.textContent =  totalSumProducts;
       // basketProducts.textContent = localStorageKeys(localStorage).length;
       localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
     }
@@ -125,10 +125,10 @@ isPopupTotal();
         basketStorageId.count--;
         newTotalItemPrice -= (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         totalSum.textContent = newTotalItemPrice;
-        sumOrder.textContent = newTotalItemPrice + ' p';
+        sumOrder.textContent = newTotalItemPrice;
         newBasketItemPrice.innerHTML = basketStorageId.count * (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
-        localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+        // localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
           const newFilteredCountProducts = localStorageKeys(localStorage)
           const changedProducts = productsList(newFilteredCountProducts)
           const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
@@ -144,48 +144,67 @@ isPopupTotal();
 
 // функция увеличение колличества товара
   const onPlusCount = function (evt) {
+    console.log(newTotalItemPrice)
     const newBasketButtonPlus = evt.target.closest('.basket-list__item-button-plus');
       if (newBasketButtonPlus) {
+
         const newBasketItem = evt.target.closest('li');
         const newBasketCount = newBasketItem.querySelector('.basket-list__item-count');
         const basketStorageId = basketStorage[newBasketItem.dataset.id];
         let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
+        console.log(newBasketItemPrice, 'lijkh')
         newBasketCount.value++;
         basketStorageId.count++;
         newTotalItemPrice += (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         totalSum.textContent = newTotalItemPrice;
-        sumOrder.textContent = newTotalItemPrice + ' p';
+        sumOrder.textContent = newTotalItemPrice;
         newBasketItemPrice.innerHTML = basketStorageId.count * (basketStorageId.price - ((PROCENT / 100) * basketStorageId.price));
         basketStorageId.totalItemPrice = newBasketItemPrice.innerHTML;
-        localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
+        // localStorage.setItem(newBasketItem.dataset.id, JSON.stringify(basketStorageId))
         const newFilteredCountProducts = localStorageKeys(localStorage)
         const changedProducts = productsList(newFilteredCountProducts)
         const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
-      basketPositions.textContent = changedTotalItemsProducts;
-      basketProducts.textContent = changedProducts.length;
+        basketPositions.textContent = changedTotalItemsProducts;
+        basketProducts.textContent = changedProducts.length;
     }
 }
-// // функция удаления товара
-// const onDeleteProduct = (evt) => {
-//   const newBasketButtonCancel = evt.target.closest('.basket-list__price-cancel');
-//   const newBasketItem = evt.target.closest('li');
-//   const basketStorageId = basketStorage[newBasketItem.dataset.id];
-//   if(newBasketButtonCancel) {
-//     console.log(basketStorageId)
+// функция удаления товара
+const onDeleteProduct = (evt) => {
+  const newBasketButtonCancel = evt.target.closest('.basket-list__price-cancel');
+  const newBasketItem = evt.target.closest('li');
+  const basketStorageId = basketStorage[newBasketItem.dataset.id];
+  let newBasketItemPrice = newBasketItem.querySelector('.basket-list__price-item-total');
 
-//     localStorage.removeItem(basketStorageId);/// добавить name
-//     newBasketItem.remove();
-//     const newFilteredCountProducts = localStorageKeys(localStorage)
-//     const changedProducts = productsList(newFilteredCountProducts)
-//     const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
-//     newTotalItemsPositions = Number(totalSum.textContent) -basketStorageId.price * basketStorageId.count
-//     totalSum.textContent = newTotalItemsPositions;
-//     sumOrder.textContent = newTotalItemsPositions;
-//     // console.log(Number(totalSum.textContent) - basketStorage[basketStorageId].price * basketStorage[basketStorageId].count)
-//     basketPositions.textContent = changedTotalItemsProducts;
-//     basketProducts.textContent = localStorageKeys(localStorage).length
-//   }
-// }
+  if(newBasketButtonCancel) {
+    // console.log(basketStorageId)
+// console.log(basketStorageId)
+        newBasketItem.remove();
+        // console.log(Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent),sumOrder.textContent, newBasketItemPrice.textContent,'delete')
+        const orderMinusProduct = Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent)
+        // console.log(sumOrder.textContent, orderMinusProduct)
+        totalSum.textContent = Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent)
+      sumOrder.textContent= Number(sumOrder.textContent) - Number(newBasketItemPrice.textContent)
+      // console.log(sumOrder.textContent)
+      console.log(newTotalItemPrice)
+
+
+
+
+    localStorage.removeItem(basketStorageId);/// добавить name
+    newBasketItem.remove();
+    const newFilteredCountProducts = localStorageKeys(localStorage)
+    const changedProducts = productsList(newFilteredCountProducts)
+    // console.log(sumOrder.textContent, 'до')
+    const changedTotalItemsProducts = changedProducts.reduce((total, current) => (total + current.count),0)
+    newTotalItemsPositions = Number(totalSum.textContent) -basketStorageId.price * basketStorageId.count
+    totalSum.textContent = newTotalItemsPositions;
+    sumOrder.textContent = newTotalItemsPositions;
+    // console.log(sumOrder.textContent, 'после')
+    // console.log(Number(totalSum.textContent) - basketStorage[basketStorageId].price * basketStorage[basketStorageId].count)
+    basketPositions.textContent = changedTotalItemsProducts;
+    basketProducts.textContent = localStorageKeys(localStorage).length
+  }
+}
 
 const onPurchaseButtonHandler = () => {
   PurchasePopup.style.display = 'block';
@@ -200,7 +219,7 @@ PurchaseButton.addEventListener('click', onPurchaseButtonHandler)
     basket.addEventListener('keydown', onInputButtonCount)
     basket.addEventListener('click', onPlusCount);
     basket.addEventListener('click', onMinusCount);
-    // basket.addEventListener('click', onDeleteProduct)
+    basket.addEventListener('click', onDeleteProduct)
     }
 
   onlistClick();
