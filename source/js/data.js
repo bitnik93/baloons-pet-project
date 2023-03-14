@@ -161,6 +161,6 @@
     }
   }
 
-  export const PROCENT = 10;
+  export const PROCENT = 23;
 
 export default data;

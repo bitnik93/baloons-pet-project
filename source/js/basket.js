@@ -1,4 +1,4 @@
-import isPopupTotal from './popup.js'
+import {isPopupTotal, onShowEmptyPopup} from './popup.js'
 import {PROCENT} from './data.js'
 // отрисовка товаров
   const template = document.querySelector('#basket-item').content;
@@ -10,9 +10,12 @@ import {PROCENT} from './data.js'
   const sumOrder = document.querySelector('.total-container__info-sum');
 
   // кнопка Заказать
-  const PurchasePopup = document.querySelector('.success-popup-container');
+  const purchasePopup = document.querySelector('.popup-container--success');
   const PurchaseButton = document.querySelector('.total-container__button');
 
+ // пустая корзина
+  const emptyPopup = document.querySelector('.popup-container--empty');
+// const
 //корзина
 const TotalContainerDesc = document.querySelector('.total-container__desc');
 
@@ -33,7 +36,7 @@ const TotalContainerDesc = document.querySelector('.total-container__desc');
   }
 
   const filterProductsKeys = localStorageKeys(localStorage)
-
+console.log(filterProductsKeys)
 // фильтрация продуктов для корзины
 const productsList = (productKeys) => {
   const productsData = []
@@ -47,7 +50,6 @@ const productsList = (productKeys) => {
 const products = productsList(filterProductsKeys)
 // Товары корзины
 const basketStorageList = (products) => {
-  console.log(products)
   const basketStorage = {};
   products.forEach((elem) => {
     basketStorage[elem.name] = elem;
@@ -78,7 +80,6 @@ const ProductsRender = (products) => {
       newTemplateItem.querySelector('.basket-list__item-procent').textContent = PROCENT + ' %';
       newTemplateItem.querySelector('.basket-list__item-old-price').textContent = product.price;
     }
-
     sumOrder.textContent = newTotalItemPrice;
     totalSum.textContent = newTotalItemPrice;
     newTotalItemsPositions += Number(product.count)
@@ -86,13 +87,19 @@ const ProductsRender = (products) => {
     basketPositions.textContent = newTotalItemsPositions;
     basket.appendChild(newTemplateItem);
   });
-
-  // функция подсчета общего колличества товаров в корзине
-  // const onTotalCountSumProducts = () => {
-  //   const sumProductsCount =
-  // }
 }
-ProductsRender(products)
+
+// проверка, есть ли в корзине товары
+const isProductsinBasket = (products) => {
+  if (products.length) {
+    return ProductsRender(products)
+  }
+    onShowEmptyPopup()
+    basketContainer.remove()
+}
+
+isProductsinBasket(products)
+
 
 // функция ввода колличества каждого товара
   const onInputButtonCount = (evt) => {
@@ -191,9 +198,10 @@ const onDeleteProduct = (evt) => {
   }
 }
 
+
 const onPurchaseButtonHandler = () => {
-  PurchasePopup.style.display = 'block';
-  // basketContainer.remove();
+  // purchasePopup.style.display = 'block';
+  basketContainer.remove()
   localStorage.setItem('purchaseList', JSON.stringify(basketStorageList(products)));
 }
 

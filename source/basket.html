@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="proload" href="./fonts/Montserrat-Bold.woff2" crossorigin as="font">
-    <link rel="proload" href="./fonts/Montserrat-Medium.woff2" crossorigin as="font">
-    <link rel="proload" href="./fonts/Montserrat-SemiBold.woff2" crossorigin as="font">
-    <link rel="proload" href="./fonts/SharpHornRegular.woff2" crossorigin as="font">
+    <link rel="preload" href="./fonts/Montserrat-Bold.woff2" as="font">
+    <link rel="preload" href="./fonts/Montserrat-Medium.woff2" as="font" >
+    <link rel="preload" href="./fonts/Montserrat-SemiBold.woff2" as="font" >
+    <link rel="preload" href="./fonts/SharpHornRegular.woff2" as="font">
     <link rel="stylesheet" href="css/style.min.css">
     <title>Магазин шариков</title>
   </head>
@@ -127,6 +127,19 @@
           </div>
         </div>
       </section>
+      <div class="popup-container popup-container--success">
+        <section class="popup">
+          <h2 class="popup__title">Заказ успешно оформлен</h2>
+          <span class="popup__desc">Менеджер свяжиться с вами в ближайшее время</span>
+          <button class="popup__button popup__button--success">Вернуться в магазин</button>
+        </section>
+      </div>
+      <div class="popup-container popup-container--empty">
+        <section class="popup">
+          <h2 class="popup__title">Пустая корзина</h2>
+          <a href="index.html" class="popup__button popup__button--empty">К покупкам</a>
+        </section>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer__logo">
@@ -171,20 +184,6 @@
         </ul>
       </div>
     </footer>
-    <div class="success-popup-container">
-      <section class="success-popup">
-        <h2 class="success-popup__title">Заказ успешно оформлен</h2>
-        <span class="success-popup__desc">Менеджер свяжиться с вами в ближайшее время</span>
-        <button class="success-popup__button">Вернуться в магазин</button>
-      </section>
-    </div>
-    <div class="popup-container">
-      <section class="empty-basket-popup">
-        <h2 class="empty-basket__title">Заказ успешно оформлен</h2>
-        <span class="empty-basket__desc">Менеджер свяжиться с вами в ближайшее время</span>
-        <button class="empty-basket__button">Вернуться в магазин</button>
-      </section>
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
     <script src="js/basket.js" type="module"></script>
