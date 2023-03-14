@@ -34,7 +34,7 @@
 }
 
 .container__nav-container {
-  max-width: 940px;
+  max-width: 890px;
   margin-top: 20px;
   display: flex;
 
@@ -371,15 +371,16 @@
   margin-left: auto;
 }
 
-.container__nav-link-back-to-store::before {
+.container__nav-link-back-to-store::after {
   content: "";
   position: absolute;
-  top: 5px;
-  left: -15px;
+  top: 8px;
+  right: -15px;
   width: 11px;
   height: 5px;
   background-image: url("../../img/Rectangle-tel.svg");
   background-repeat: no-repeat;
+  transform: rotate(-90deg);
 }
 
 .container__nav-separator {
