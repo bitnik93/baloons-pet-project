@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
-  <link rel="preload" href="./fonts/Montserrat-Bold.woff2" crossorigin as="font">
-  <link rel="preload" href="./fonts/Montserrat-Medium.woff2" crossorigin as="font">
-  <link rel="preload" href="./fonts/Montserrat-SemiBold.woff2" crossorigin as="font">
-  <link rel="preload" href="./fonts/SharpHornRegular.woff2" crossorigin as="font">
+  <link rel="preload" href="./fonts/Montserrat-Bold.woff2" as="font">
+  <link rel="preload" href="./fonts/Montserrat-Medium.woff2" as="font">
+  <link rel="preload" href="./fonts/Montserrat-SemiBold.woff2" as="font">
+  <link rel="preload" href="./fonts/SharpHornRegular.woff2" as="font">
   <link rel="stylesheet" href="css/style.min.css">
   <title>Магазин шариков</title>
 </head>
@@ -42,13 +42,13 @@
             <a href="" class="main-nav-list__link">Отзывы</a>
           </li>
         </ul>
-        <a class="main-nav-list__link" href="basket.html">
-          <svg class="main-nav-list__link-basket-img" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a class="main-nav__link-item" href="basket.html">
+          <svg class="main-nav__link-basket-img" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.0001 0.599976C11.679 0.599976 9.0001 3.27888 9.0001 6.59998V7.79998H4.25635L4.2001 8.32498L1.8001 29.325L1.7251 30H28.2751L28.2001 29.325L25.8001 8.32498L25.7438 7.79998H21.0001V6.59998C21.0001 3.27888 18.3212 0.599976 15.0001 0.599976ZM15.0001 1.79998C17.679 1.79998 19.8001 3.92107 19.8001 6.59998V7.79998H10.2001V6.59998C10.2001 3.92107 12.3212 1.79998 15.0001 1.79998ZM5.34385 8.99998H9.0001V10.3687C8.6415 10.5773 8.4001 10.957 8.4001 11.4C8.4001 12.0633 8.93682 12.6 9.6001 12.6C10.2634 12.6 10.8001 12.0633 10.8001 11.4C10.8001 10.957 10.5587 10.5773 10.2001 10.3687V8.99998H19.8001V10.3687C19.4415 10.5773 19.2001 10.957 19.2001 11.4C19.2001 12.0633 19.7368 12.6 20.4001 12.6C21.0634 12.6 21.6001 12.0633 21.6001 11.4C21.6001 10.957 21.3587 10.5773 21.0001 10.3687V8.99998H24.6563L26.9251 28.8H3.0751L5.34385 8.99998Z" fill="currentColor"/>
           </svg>
         </a>
         <div class="main-nav__store-container">
-          <ul class="store-nav-list store-nav-links-list store-nav__list list-reset">
+          <ul class="store-nav-list store-nav-links-list list-reset">
             <li class="store-nav-list__item">
               <a class="store-nav-links-list__item" href="">Латексные шары</a>
             </li>
@@ -65,7 +65,7 @@
               <a class="store-nav-links-list__item" href="">Хромовые шары</a>
             </li>
           </ul>
-          <ul class="contacts-nav-links-list contacts-nav__links-list list-reset">
+          <ul class="contacts-nav-links-list list-reset">
             <li class="contacts-nav-links-list__item"><a href="tel:+78612042446" class="contacts-nav-links-list__phone">+78612042446</a></li>
             <li class="contacts-nav-links-list__item">
               <a href="#">

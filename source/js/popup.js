@@ -1,29 +1,41 @@
 
-const popup = document.querySelector('.success-popup-container');
-const popupButton = document.querySelector('.success-popup__button');
+const popup = document.querySelector('.popup-container--success');
+const popupButtonSuccess = document.querySelector('.popup__button--success');
 const purchaseButton = document.querySelector('.total-container__button');
+
+// попап пустой корзины
+const emptyPopup = document.querySelector('.popup-container--empty')
+// const popupButtonEmpty = document.querySelector('.popup__button--empty');
+
 
 const deletePurchasedProducts = () => {
   localStorage.clear()
 }
 
-const onClosePopup = () => {
-  popup.classList.remove('visually-hidden');
+const onOpenPopup = () => {
+  popup.style.display = 'block';
 }
 
-const onOpenPopup = () => {
-  popup.classList.add('visually-hidden');
+
+const onShowEmptyPopup = () => {
+  emptyPopup.style.display = 'block';
+}
+
+const onClosePopup = () => {
+  console.log('dfg')
+  popup.style.display = 'none';
   deletePurchasedProducts();
+  onShowEmptyPopup();
 }
 
 const isPopupTotal = () => {
-  if (purchaseButton && popupButton) {
-    purchaseButton.addEventListener('click', onClosePopup)
-    popupButton.addEventListener('click', onOpenPopup)
+  if (purchaseButton && popupButtonSuccess) {
+    purchaseButton.addEventListener('click', onOpenPopup)
+    popupButtonSuccess.addEventListener('click', onClosePopup)
   }
 }
 
 isPopupTotal();
 
-export default isPopupTotal;
+export {isPopupTotal, onShowEmptyPopup};
 
