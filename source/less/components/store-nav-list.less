@@ -11,6 +11,12 @@
     min-width: 900px;
     overflow: auto;
   }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    width: 100%;
+    font-size: @fz16;
+    justify-content: space-between;
+  }
 }
 
 .store-nav-links-list__item {
@@ -30,8 +36,6 @@
 }
 
 .store-nav-list__item:not(:last-child) {
-  margin-right: 40px;
-
   @media (max-width: @mobile-width) {
     margin-right: 20px;
   }

@@ -3,7 +3,7 @@
   min-width: 400px;
   justify-content: space-between;
 
-  @media (max-width: 375px) {
+  @media (max-width: @mobile-width) {
     display: none;
   }
 }
@@ -16,6 +16,13 @@
 
   @media (max-width: @mobile-width) {
     display: none;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    font-size: @fz14;
+    min-width: 300px;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
 
