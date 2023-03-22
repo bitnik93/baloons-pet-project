@@ -21,7 +21,7 @@ const productOldPrice = pageContainer.querySelector('.cost-container__old-price'
 
 //кнопки состава
 const compoundButtonsContainer = pageContainer.querySelector('.buy-buttons-container')
-const compoundButtons = compoundButtonsContainer.querySelectorAll('.buy-buttons-container--compound')
+const compoundButtons = compoundButtonsContainer.querySelectorAll('.buy-buttons-container__button--compound')
 
 // акции
 const actions = document.querySelector('.small-photos-list');
@@ -29,7 +29,7 @@ const actionsItems = actions.querySelectorAll('.container-list__item');
 
 // кнопка 'в Корзину' и контейнер с кнопками добавления товаров
 const productProcent = pageContainer.querySelector('.cost-container__procent');
-const buyProductButton = pageContainer.querySelector('.buy-buttons-container--buy-button')
+const buyProductButton = pageContainer.querySelector('.buy-buttons-container__buy-button')
 const addProductButtonsContainer = pageContainer.querySelector('.basket-list.buy-buttons-container-count')
 const addInputProduct = pageContainer.querySelector('.basket-list__item-count');
 const productListItemCount = pageContainer.querySelector('.product-list-item__count')
@@ -45,7 +45,7 @@ let productData = JSON.parse(chosenProduct);
 const PROCENT = 23;
 // функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
-        const compoundButton = evt.target.closest('.buy-buttons-container--compound');
+        const compoundButton = evt.target.closest('.buy-buttons-container__button--compound');
 
         compoundButtons.forEach((elem) => {
             elem.classList.remove('buy-buttons-container__button--active')
