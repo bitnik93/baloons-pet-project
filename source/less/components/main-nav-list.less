@@ -5,6 +5,16 @@
   min-height: 20px;
   min-width: 500px;
   font-size: @main-text-size;
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    font-size: @fz14;
+    min-width: 300px;
+    max-width: 460px;
+    flex-basis: 300px;
+    flex-grow: 1;
+    box-sizing: border-box;
+    padding: 0 5px;
+  }
 }
 
 .main-nav-list--closed {

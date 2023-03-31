@@ -36,13 +36,15 @@ const compositionPricesList = (data) => {
             const procentItemSign = elem.querySelector('.container-list__procent-sign');
             const compositionPriceRuble = elem.querySelector('.container-list__price-ruble');
             const compositionLinkContainer = elem.querySelector('.container-list__link-container');
+            const compositionImgWrapper = elem.querySelector('.container-list__img-wrapper')
             compositionTitle.textContent = data[compositionitem].name
             compositionOldPrice.textContent = data[compositionitem].price;
             if (data[compositionitem].discount) {
               const actionContainer = document.createElement('div');
               actionContainer.textContent = '%'
               actionContainer.classList.add('container-list__link--price-off');
-              compositionLinkContainer.appendChild(actionContainer);
+              console.log(compositionImgWrapper)
+              compositionImgWrapper.appendChild(actionContainer);
               procentItemSign.style.display = 'flex';
               compositionProcent.textContent = PROCENT;
               compositionPrice.textContent = data[compositionitem].price - ((PROCENT / 100) * data[compositionitem].price);

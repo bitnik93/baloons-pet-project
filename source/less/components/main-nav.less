@@ -11,6 +11,10 @@
   @media (max-width: @mobile-width) {
     justify-content: space-between;
   }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    // max-width: 968px;
+  }
 }
 
 .main-nav__wrapper {
@@ -21,11 +25,21 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  overflow: auto;
 
   @media (max-width: @mobile-width) {
+    padding: 0 15px;
     width: 250px;
-    overflow: auto;
     order: 5;
+    flex-grow: 1;
+    flex-basis: 50%;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    min-height: 100px;
+    align-items: stretch;
   }
 }
 
@@ -35,12 +49,21 @@
   width: 100%;
   justify-content: space-between;
 
-  @media (max-width: 375px) {
+  @media (max-width: @mobile-width) {
     display: none;
   }
 }
 
 .main-nav__link-item {
+  @media (max-width: @mobile-width) {
+    display: flex;
+    justify-content: center;
+    flex-basis: 10%;
+    order: 3;
+  }
+}
+
+.main-nav__link {
   @media (max-width: @mobile-width) {
     order: 4;
   }
@@ -51,7 +74,7 @@
 }
 
 .main-nav__mobile-button--closed {
-  @media (max-width: 375px) {
+  @media (max-width: @mobile-width) {
     cursor: pointer;
     display: flex;
     border: none;
@@ -81,6 +104,14 @@
     position: relative;
     display: none;
   }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    display: none;
+  }
+
+  @media (min-width: @desktop-width) {
+    display: flex;
+  }
 }
 
 .main-nav__container {
@@ -88,14 +119,21 @@
   align-items: center;
   border: 2px solid #a9a9a9;
   border-radius: 9px;
-  min-width: 443px;
   min-height: 49px;
   box-sizing: border-box;
   padding-left: 5px;
 
   @media (max-width: @mobile-width) {
-    min-width: 193px;
+    min-width: 100%;
     min-height: 49px;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    width: 100%;
+  }
+
+  @media (min-width: @desktop-width) {
+    min-width: 440px;
   }
 }
 
@@ -111,13 +149,24 @@
 }
 
 .main-nav__search-container {
-  min-width: 650px;
   display: flex;
   justify-content: space-between;
 
   @media (max-width: @mobile-width) {
+    flex-basis: 80%;
     min-width: 193px;
     order: 2;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    flex-basis: 100px;
+    flex-grow: 3;
+    max-width: 470px;
+  }
+
+  @media (min-width: @desktop-width) {
+    flex: auto;
+    max-width: 630px;
   }
 }
 

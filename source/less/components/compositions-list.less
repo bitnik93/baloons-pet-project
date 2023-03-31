@@ -1,7 +1,31 @@
+.compositions-list__img-container {
+  position: relative;
+}
+
 .compositions-list__img {
-  @media (min-width: 1400px) {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  @media (min-width: @desktop-width) {
     width: 250px;
     height: 301px;
+  }
+
+  &::after {
+    position: absolute;
+    content: "6";
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 14%;
+    background-color: @main-color;
+    border-radius: 10%;
+    opacity: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
   }
 }
 

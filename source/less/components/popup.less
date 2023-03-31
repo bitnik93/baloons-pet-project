@@ -1,6 +1,7 @@
 .popup {
-  width: 878px;
-  height: 315px;
+  width: 50vw;
+  max-height: 315px;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10,20 +11,34 @@
   background-color: rgb(255, 255, 255);
   border: 2px solid @main-color;
   border-radius: 15px;
+  text-align: center;
+
+  @media (max-width: @mobile-width) {
+    margin-top: 70px;
+    height: 20vh;
+  }
 }
 
 .popup__title {
   font-size: 52px;
   font-weight: 700;
+
+  @media (max-width: @mobile-width) {
+    font-size: @fz28;
+  }
+
+  @media (min-width: @tablet-width) and(max-width: 1000px) {
+    font-size: @fz40;
+  }
 }
 
 .popup__desc {
-  @fz24: 24px;
+  font-size: @fz24;
   font-weight: 500;
 }
 
 .popup__button {
-  min-width: 368px;
+  min-width: 50%;
   min-height: 71px;
   color: #c949ca;
   background-color: #fff3ff;
@@ -33,6 +48,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: @mobile-width) {
+    min-height: 45px;
+  }
 
   &:hover {
     background-color: #c949ca;
