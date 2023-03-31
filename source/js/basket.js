@@ -103,6 +103,7 @@ isProductsinBasket(products)
 
 // функция ввода колличества каждого товара
   const onInputButtonCount = (evt) => {
+    let newTotalItemPrice = null;
     if (evt.key === 'Enter') {
       const newBasketItem = evt.target.closest('li');
       const basketItemInput = evt.target.closest('.basket-list__item-count');

@@ -24,7 +24,7 @@ const compoundButtonsContainer = pageContainer.querySelector('.buy-buttons-conta
 const compoundButtons = compoundButtonsContainer.querySelectorAll('.buy-buttons-container__button--compound')
 
 // акции
-const actions = document.querySelector('.small-photos-list');
+const actions = document.querySelector('.promotion-list');
 const actionsItems = actions.querySelectorAll('.container-list__item');
 
 // кнопка 'в Корзину' и контейнер с кнопками добавления товаров
@@ -111,7 +111,7 @@ const onOpenCountProductHandler = () => {
   addProductButtonsContainer.style.display = 'flex';
 }
 
-// функция добавления/удаления продуктов по нажатия на клавиатуру
+// функция добавления/удаления продуктов по нажатию на клавиатуру
 
 const onKeydownChangeCountProductsHandler = (evt) => {
   if (evt.key === 'Enter' && addInputProduct.value <= 0 ) {
@@ -185,7 +185,7 @@ const BuyProductHandler = () => {
   buyProductButton.addEventListener('click', onOpenCountProductHandler)
 }
 
-// проверка на новый продукт, если нет, то срабатывает функция добавления удаления продуктов
+// проверка на новый продукт, если нет, то срабатывает функция добавления/удаления продуктов
   newProductsInBasket() ?  BuyProductHandler() : onAddMoreOrLessProductCount();
 
 // маленькие и большие картинки
@@ -215,7 +215,7 @@ $(function() {
   }
 
   $(window).on('resize', function () {
-    if($(window).width() > 369) {
+    if($(window).width() > 768) {
       if ($slickList.hasClass('slick-initialized')) {
         $slickList.slick('unslick')
       }
@@ -225,6 +225,7 @@ $(function() {
       return $slickList.slick(settings);
     }
   })
+
 });
 
 

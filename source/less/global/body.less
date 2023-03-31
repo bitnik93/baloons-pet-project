@@ -8,7 +8,7 @@
   font-weight: 500;
   font-size: @main-text-size;
 
-  @media(min-width: @desktop-width) {
+  @media (min-width: @desktop-width) {
     max-width: 1440px;
   }
 }
@@ -30,6 +30,10 @@ select {
   margin-top: 40px;
 
   @media (max-width: @mobile-width) {
+    margin-top: 20px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1439px) {
     margin-top: 20px;
   }
 }

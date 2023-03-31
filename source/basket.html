@@ -190,12 +190,6 @@
     <script src="js/popup.js" type="module"></script>
     <template id="basket-item">
                   <li class="basket-list__item">
-              <div class="basket-list__price-item-cont">
-                <h2 class="basket-list__price-item-total">1450</h2>
-                <button class="basket-list__price-cancel">
-                  <img src="img/cross.svg" width="30" height="30" alt="">
-                </button>
-              </div>
               <div class="basket-list__item-container">
                 <div class="basket-list__item-img-cont">
                   <span class="basket-list__item-number">1</span>
@@ -212,10 +206,22 @@
                 <small class="basket-list__item-article">Код товара</small>
                 <span class="basket-list__item-code">54223</span>
               </div>
-              <div class="basket-list__item-buttons-cont">
-                <button class="basket-list__item-button-minus"></button>
-                <input class="basket-list__item-count" placeholder="1"></input>
-                <button class="basket-list__item-button-plus"></div>
+              <div class="basket-list__item-price-wrapper">
+                <div class="basket-list__item-buttons-cont">
+                  <button class="basket-list__item-button-minus"></button>
+                  <input class="basket-list__item-count" placeholder="1"></input>
+                  <button class="basket-list__item-button-plus">
+                </div>
+                <div class="basket-list__price-item-cont">
+                  <div class="basket-list__price-item-cont-wrapper">
+                    <h2 class="basket-list__price-item-total">1450</h2>
+                    <span class="basket-list__price-item-rubble-sign">р</span>
+                  </div>
+                  <button class="basket-list__price-cancel">
+                    <img src="img/cross.svg" width="30" height="30" alt="">
+                  </button>
+                </div>
+              </div>
             </li>
     </template>
   </body>
