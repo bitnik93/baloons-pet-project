@@ -238,6 +238,7 @@ const priceAndDescItemsFn = (items, data) => {
     const oldPrice = item.querySelector('.container-list__old-price');
     const procent = item.querySelector('.container-list__procent');
     const desc = item.querySelector('.container-list__desc');
+    desc.textContent = data[article].name;
       newPrice.textContent = data[article].price - (data[article].price * (PROCENT / 100))  + 'p';
       oldPrice.textContent = data[article].price  + 'p';
     if (data[article].discount) {
