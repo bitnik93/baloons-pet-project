@@ -1,6 +1,6 @@
   export const data = {
     'baloons-1' : {
-        name : 'baloons-1',
+        name : 'baloons-1 sale body__container  v sale biner  font-size: @fz12;',
         url : '#',
         image : 'img/top-seller-img-1.jpg',
         price: 1000,
@@ -96,7 +96,7 @@
       ]
     },
     'baloons-7' : {
-        name : 'baloons-7',
+        name : 'baloons-7 bljj lkjlkjlj lkjj lkjljtuyons-7 ',
         url : '#',
         image : 'img/stocks-img-2.jpg',
         price: 4000,

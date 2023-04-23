@@ -122,6 +122,8 @@ isProductsinBasket(products)
     }
   }
 
+
+
 // функция уменьшения колличества товара
   const onMinusCount = function (evt)  {
     let newTotalItemPrice = null;
@@ -207,10 +209,15 @@ const onPurchaseButtonHandler = () => {
 
 PurchaseButton.addEventListener('click', onPurchaseButtonHandler)
 
+
+function fn (evt) {
+console.log(evt.target)
+}
 // функция обрабатывающая клики добавления/удаления товаров
   const onlistClick = function () {
     basket.addEventListener('keydown', onInputButtonCount)
     basket.addEventListener('click', onPlusCount);
+    basket.addEventListener('click', fn);
     basket.addEventListener('click', onMinusCount);
     basket.addEventListener('click', onDeleteProduct)
     }

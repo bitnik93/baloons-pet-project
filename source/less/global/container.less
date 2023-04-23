@@ -62,10 +62,12 @@
 .container-list {
   display: flex;
   padding-bottom: 40px;
+  width: 100%;
+  justify-content: center;
 
   @media (max-width: @mobile-width) {
     display: grid;
-    gap: 0 10px;
+    gap: 20px 10px;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
   }
@@ -76,15 +78,24 @@
   justify-content: center;
   background-color: #ffffff;
   border-radius: 13px;
-  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
-  padding: 0 8px 8px 8px;
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+  padding: 8px;
+  box-sizing: border-box;
+  width: 100%;
 
   @media (max-width: @tablet-width) {
-    max-width: 259px;
+    max-width: 180px;
   }
+
+  // @media (min-width: @desktop-width) {
+  //   width: 100%;
+  // }
 }
 
 .container-list__img-wrapper {
+  width: 100%;
+  height: auto;
+
   @media (max-width: @mobile-width) {
     width: 100%;
     height: auto;
@@ -99,6 +110,8 @@
 }
 
 .container-list__item--flex {
+  // flex-basis: 100%;
+
   @media (max-width: @mobile-width) {
     display: flex;
     justify-content: center;
@@ -106,7 +119,7 @@
 }
 
 .container-list__item--flex:not(:last-child) {
-  margin-right: 30px;
+  margin-right: 20px;
 
   @media (max-width: @mobile-width) {
     margin-right: 0;
@@ -117,6 +130,7 @@
 .container-list__item-our-works {
   padding: 0;
   border-radius: 22px;
+  width: auto;
 
   &:hover {
     transform: scale(1.02);
@@ -126,6 +140,10 @@
   @media (max-width: @mobile-width) {
     margin-right: 5px;
   }
+}
+
+ul .container-list__item-our-works {
+  width: auto;
 }
 
 .container-list__item-our-works:not(:last-child) {
@@ -146,15 +164,24 @@
 .container-list__price {
   .list-reset;
   font-size: @fz24;
+  width: 100%;
 
   @media (max-width: @mobile-width) {
-    font-size: @fz14;
+    font-size: @fz18;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    font-size: @fz20;
   }
 }
 
 .container-list__old-price {
   @media (max-width: @mobile-width) {
     font-size: @fz10;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    font-size: @fz14;
   }
 }
 
@@ -165,33 +192,45 @@
 
 .container-list--grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
   gap: 50px 21px;
   justify-items: center;
 
-  @media (max-width: @mobile-width) {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 21px;
-  }
+  // @media (max-width: @mobile-width) {
+  //   grid-template-columns: 1fr 1fr;
+  //   gap: 20px 21px;
+  // }
 
-  @media (min-width: @tablet-width) and (max-width: 1439px) {
+  @media (min-width: 1000px) and (max-width: 1439px) {
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  @media (min-width: @desktop-width) {
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 .container-list--grid-compositions {
   display: grid;
   gap: 50px 10px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   @media (max-width: @mobile-width) {
     grid-template-columns: 1fr 1fr;
     gap: 20px 10px;
   }
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 }
 
 .container-list__link {
+  width: 100%;
   color: #000000;
   min-height: 423px;
   max-width: 329px;
@@ -210,11 +249,12 @@
 
   @media (max-width: @desktop-width) {
     min-height: auto;
-    width: auto;
+    // width: auto;
   }
 }
 
 .container-list__link-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -237,7 +277,7 @@
 }
 
 .container-list__item-title {
-
+  // max-width: max-content;
   text-align: center;
   .list-reset;
   margin-top: 15px;
@@ -250,11 +290,16 @@
 .container-list__desc {
   .list-reset;
   font-weight: 600;
+  order: 1;
 
   @media (max-width: @mobile-width) {
     font-size: @fz12;
     text-align: center;
     width: 100%;
+  }
+
+  @media (min-width: @tablet-width) and (max-width: 1000px) {
+    font-size: @fz14;
   }
 }
 
@@ -276,10 +321,11 @@
 .container-list__price-container {
   margin-top: 15px;
   width: 100%;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  order: 2;
 
   @media (max-width: @mobile-width) {
     max-width: 169px;
@@ -315,6 +361,10 @@
   @media (max-width: @mobile-width) {
     font-size: @fz10;
   }
+
+  @media (min-width: @tablet-width) and (max-width: 1439px) {
+    font-size: @fz14;
+  }
 }
 
 .container-list__procent-sign {
@@ -344,6 +394,8 @@
   display: flex;
   justify-content: space-between;
   max-width: 1027px;
+  flex-wrap: wrap;
+  min-height: 100px;
 
   @media (max-width: @mobile-width) {
     flex-wrap: wrap;
@@ -360,6 +412,7 @@
   font-size: @fz20;
   font-weight: 600;
   color: #525252;
+  flex: 1 1 auto;
 
   @media (max-width: @mobile-width) {
     font-size: @fz16;
@@ -453,6 +506,8 @@
 }
 
 .slick-slide {
+  width: auto;
+
   @media (max-width: @mobile-width) {
     margin: 0 10px;
   }

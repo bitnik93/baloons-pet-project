@@ -46,7 +46,6 @@ const PROCENT = 23;
 // функция подсвечивания активного состава шарики
 const compoundButtonsHandler = (evt) => {
         const compoundButton = evt.target.closest('.buy-buttons-container__button--compound');
-
         compoundButtons.forEach((elem) => {
             elem.classList.remove('buy-buttons-container__button--active')
         })
@@ -189,16 +188,24 @@ const BuyProductHandler = () => {
   newProductsInBasket() ?  BuyProductHandler() : onAddMoreOrLessProductCount();
 
 // маленькие и большие картинки
-const productPageListHandler = (evt) => {
+function productPageListHandler (evt) {
 const smallPhoto = evt.target.closest('img');
 productSmallPhotos.forEach((elem) => {
     elem.classList.remove('product-page__item--active')
 })
-productBigPhoto.src = smallPhoto.src
+productBigPhoto.src = this.src
 smallPhoto.classList.add('product-page__item--active')
 }
 
-productSmallPhotosList.addEventListener('click', productPageListHandler);
+function onShowCurrentProductPhoto (productPhotos) {
+  for (let photo of productPhotos) {
+    photo.addEventListener('click', productPageListHandler);
+  }
+}
+
+
+onShowCurrentProductPhoto(productSmallPhotos)
+
 
 // прокрутка маленьких фото
 $(function() {
