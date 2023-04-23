@@ -96,7 +96,7 @@
       ]
     },
     'baloons-7' : {
-        name : 'baloons-7 bljj lkjlkjlj lkjj lkjljtuyons-7 ',
+        name : 'baloons-7',
         url : '#',
         image : 'img/stocks-img-2.jpg',
         price: 4000,

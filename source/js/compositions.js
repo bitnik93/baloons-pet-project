@@ -78,23 +78,23 @@ containerPriceSection.addEventListener('click', () => {
       // console.log('только больше')
         console.log(product)
     }
-    else if (compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked) {
+    if (compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked) {
       product.style.display = 'flex';
       // console.log('только меньше')
     }
-    else if(!productPriceOff.checked && compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value) {
+    if(!productPriceOff.checked && compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value) {
       product.style.display = 'flex';
       console.log('без галочки')
     }
-    else if(compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value && productPriceOff.checked && (compositionProcent == 'true')) {
+    if(compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value && productPriceOff.checked && (compositionProcent == 'true')) {
       product.style.display = 'flex';
       console.log('с галочкой и оба интупта')
     }
-    else if(compositionPrice >= inputFrom.value && productPriceOff.checked && !inputTo.value && (compositionProcent == 'true')) {
+    if(compositionPrice >= inputFrom.value && productPriceOff.checked && !inputTo.value && (compositionProcent == 'true')) {
       product.style.display = 'flex';
       console.log('с галочкой и только от')
     }
-    else if(compositionPrice <= inputTo.value && productPriceOff.checked && !inputFrom.value && (compositionProcent == 'true')) {
+    if(compositionPrice <= inputTo.value && productPriceOff.checked && !inputFrom.value && (compositionProcent == 'true')) {
       product.style.display = 'flex';
       console.log('с галочкой и только до')
     }
