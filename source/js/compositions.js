@@ -37,7 +37,7 @@ const compositionPricesList = (data) => {
             const compositionPriceRuble = elem.querySelector('.container-list__price-ruble');
             const compositionLinkContainer = elem.querySelector('.container-list__link-container');
             const compositionImgWrapper = elem.querySelector('.container-list__img-wrapper')
-            compositionTitle.textContent = data[compositionitem].name
+            compositionTitle.textContent = data[compositionitem].articleName;
             compositionOldPrice.textContent = data[compositionitem].price;
             if (data[compositionitem].discount) {
               const containerListHoverTitle = document.createElement('span');
@@ -70,7 +70,8 @@ const compositionPricesList = (data) => {
 compositionPricesList(data)
 
 
-containerPriceSection.addEventListener('click', () => {
+containerPriceSection.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
   const productPriceOff = document.querySelector('.container__price-input-off');
   compositionsProducts.filter((product) => {
     const compositionPrice = Number(product.querySelector('.container-list__price').textContent);
@@ -102,7 +103,7 @@ containerPriceSection.addEventListener('click', () => {
       product.style.display = 'flex';
       console.log('с галочкой и только до')
     }
-  })
+  })}
 })
 
 const OnSortFilterHandler = (evt) => {

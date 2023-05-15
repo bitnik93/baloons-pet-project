@@ -71,7 +71,7 @@ const ProductsRender = (products) => {
     newTemplateItem.querySelector('.basket-list__img').src = product.image;
     newTemplateItem.querySelector('.basket-list__item-count').value = product.count;
     newTemplateItem.querySelector('.basket-list__item-price').textContent = product.price - ((PROCENT / 100) * product.price);
-    newTemplateItem.querySelector('.basket-list__item-par').textContent = product.name;
+    newTemplateItem.querySelector('.basket-list__item-par').textContent = product.articleName;
     newTemplateItem.querySelector('.basket-list__item-code').textContent = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-minus').dataset.id = product.code;
     newTemplateItem.querySelector('.basket-list__item-button-plus').dataset.id = product.code;

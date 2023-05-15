@@ -75,7 +75,7 @@ const productPage = (product) => {
   inputContainer.dataset.count = product.name;
     productName.textContent = product.name;
     productBigPhoto.src = product.image;
-    productTitle.textContent = product.name;
+    productTitle.textContent = product.articleName;
     productPrice.textContent = product.price;
     const productRubleSign = document.createElement('span');
     productRubleSign.textContent = 'p'
@@ -221,7 +221,7 @@ $(function() {
     mobileFirst: true,
   }
 
-  $(window).ready($slickList.slick(settings))
+  // $(window).ready($slickList.slick(settings))
 
   $(window).on('resize', function () {
     if($(window).width() > 768) {
