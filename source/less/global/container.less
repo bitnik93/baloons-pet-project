@@ -118,6 +118,26 @@
   }
 }
 
+.container-list__hover-title {
+  color: #ffffff;
+  z-index: 1;
+  position: absolute;
+  background-color: rgb(31, 31, 173);
+  border-radius: 20px 20px 0 0;
+  width: 50px;
+  height: 25px;
+  top: -25px;
+  left: 50%;
+  margin-left: -25px;
+  display: none;
+}
+
+.container-list__item:hover .container-list__hover-title {
+  background-color: #f188f2;
+  display: inline;
+}
+
+
 .container-list__item--flex:not(:last-child) {
   margin-right: 20px;
 
@@ -231,6 +251,7 @@ ul .container-list__item-our-works {
 
 .container-list__link {
   width: 100%;
+  position: relative;
   color: #000000;
   min-height: 423px;
   max-width: 329px;
