@@ -185,6 +185,7 @@ ul .container-list__item-our-works {
   .list-reset;
   font-size: @fz24;
   width: 100%;
+  font-weight: 600;
 
   @media (max-width: @mobile-width) {
     font-size: @fz18;
@@ -193,6 +194,25 @@ ul .container-list__item-our-works {
   @media (min-width: @tablet-width) and (max-width: 1439px) {
     font-size: @fz20;
   }
+}
+
+.compositions-list__price-wrapper {
+
+  align-items: baseline;
+}
+
+.compositions-list .container-list__price-wrapper {
+  justify-content: start;
+  width: 50%;
+}
+
+.compositions-list .container-list__procent-wrapper {
+  justify-content: end;
+  width: 50%;
+}
+
+.compositions-list__price {
+  width: auto;
 }
 
 .container-list__old-price {
@@ -276,6 +296,7 @@ ul .container-list__item-our-works {
 
 .container-list__link-container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -312,6 +333,7 @@ ul .container-list__item-our-works {
   .list-reset;
   font-weight: 600;
   order: 1;
+  margin-bottom: 5px;
 
   @media (max-width: @mobile-width) {
     font-size: @fz12;
@@ -340,7 +362,7 @@ ul .container-list__item-our-works {
 
 
 .container-list__price-container {
-  margin-top: 15px;
+  margin-top: auto;
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
@@ -357,7 +379,12 @@ ul .container-list__item-our-works {
   min-width: 45px;
   display: flex;
   font-size: @fz16;
-  justify-content: center;
+  justify-content: start;
+  width: 100%;
+
+  &:first-child {
+    order: 3;
+  }
 
   @media (max-width: @mobile-width) {
     font-size: @fz14;

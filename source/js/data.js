@@ -1,6 +1,7 @@
   export const data = {
     'baloons-1' : {
         name : 'baloons-1',
+        articleName: 'Солнечный мяч для пляжа',
         url : '#',
         image : 'img/top-seller-img-1.jpg',
         price: 1000,
@@ -17,6 +18,7 @@
     },
     'baloons-2' : {
         name : 'baloons-2',
+        articleName: 'Космический шар со светом',
         url : '#',
         image : 'img/top-seller-img-2.jpg',
         price: 1500,
@@ -33,6 +35,7 @@
     },
     'baloons-3' : {
         name : 'baloons-3',
+        articleName: 'Голубой шарик с сердечками',
         url : '#',
         image : 'img/top-seller-img-3.jpg',
         price: 2000,
@@ -49,6 +52,7 @@
     },
     'baloons-4' : {
         name : 'baloons-4',
+        articleName: 'Белый шар для свадебной фотосессии',
         url : '#',
         image : 'img/top-seller-img-4.jpg',
         price: 2500,
@@ -65,6 +69,7 @@
     },
     'baloons-5' : {
         name : 'baloons-5',
+        articleName: 'Розовый шарик с бабочками',
         url : '#',
         image : 'img/top-seller-img-5.jpg',
         price: 3000,
@@ -81,6 +86,7 @@
     },
     'baloons-6' : {
         name : 'baloons-6',
+        articleName: 'Шарик для игры в дартс',
         url : '#',
         image : 'img/stocks-img-1.jpg',
         price: 3500,
@@ -97,6 +103,7 @@
     },
     'baloons-7' : {
         name : 'baloons-7',
+        articleName: 'Шарик с глазками для хэллоуина',
         url : '#',
         image : 'img/stocks-img-2.jpg',
         price: 4000,
@@ -113,6 +120,7 @@
     },
     'baloons-8' : {
         name : 'baloons-8',
+        articleName: 'Золотой шар на елку',
         url : '#',
         image : 'img/stocks-img-3.jpg',
         price: 4500,
@@ -129,6 +137,7 @@
     },
     'baloons-9' : {
         name : 'baloons-9',
+        articleName: 'Шарик с изображением мультяшных персонажей',
         url : '#',
         image : 'img/stocks-img-4.jpg',
         price: 5000,
@@ -145,6 +154,7 @@
     },
     'baloons-10' : {
         name : 'baloons-10',
+        articleName: 'Серебряный шарик для декорирования свадебного зала',
         url : '#',
         image : 'img/stocks-img-5.jpg',
         price: 5500,
