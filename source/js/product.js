@@ -221,6 +221,8 @@ $(function() {
     mobileFirst: true,
   }
 
+  $(window).ready($slickList.slick(settings))
+
   $(window).on('resize', function () {
     if($(window).width() > 768) {
       if ($slickList.hasClass('slick-initialized')) {

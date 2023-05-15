@@ -165,7 +165,6 @@ const itemWithProcent =  (element) => {
 
 // функция увеличение колличества товара
   const onPlusCount = function (evt) {
-
     const newBasketButtonPlus = evt.target.closest('.basket-list__item-button-plus');
       if (newBasketButtonPlus) {
         let newItemPrice = null;

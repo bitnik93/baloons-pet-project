@@ -2,6 +2,7 @@
   width: 50vw;
   max-height: 315px;
   height: 30vh;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,12 +17,14 @@
   @media (max-width: @mobile-width) {
     margin-top: 70px;
     height: 20vh;
+    min-height: 120px;
   }
 }
 
 .popup__title {
   font-size: 52px;
   font-weight: 700;
+  margin-bottom: 5px;
 
   @media (max-width: @mobile-width) {
     font-size: @fz28;
@@ -40,6 +43,8 @@
 .popup__button {
   min-width: 50%;
   min-height: 71px;
+  box-sizing: border-box;
+  padding: 2px;
   color: #c949ca;
   background-color: #fff3ff;
   border: 1px solid #c949ca;
