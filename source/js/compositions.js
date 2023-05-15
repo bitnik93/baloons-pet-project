@@ -40,7 +40,11 @@ const compositionPricesList = (data) => {
             compositionTitle.textContent = data[compositionitem].name
             compositionOldPrice.textContent = data[compositionitem].price;
             if (data[compositionitem].discount) {
+              const containerListHoverTitle = document.createElement('span');
+              const compositionLinkHover = elem.querySelector('.container-list__link');
               const actionContainer = document.createElement('div');
+              compositionLinkHover.appendChild(containerListHoverTitle);
+              containerListHoverTitle.classList.add('container-list__hover-title');
               actionContainer.textContent = '%'
               actionContainer.classList.add('container-list__link--price-off');
               console.log(compositionImgWrapper)
