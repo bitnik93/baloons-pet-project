@@ -13,6 +13,11 @@ const priceWrapper = document.querySelector('.container__price-wrapper')
 const inputFrom = document.querySelector('.container__price-input-from')
 const inputTo = document.querySelector('.container__price-input-to')
 
+// кнопка применить
+
+const confirmFilterButton = document.querySelector('.container__price-button')
+
+
 // элемент скидки на товары
 const procentItem = document.querySelector('.container-list__procent');
 // const PROCENT = 23;
@@ -70,41 +75,27 @@ const compositionPricesList = (data) => {
 compositionPricesList(data)
 
 
-containerPriceSection.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+confirmFilterButton.addEventListener('click', () => {
   const productPriceOff = document.querySelector('.container__price-input-off');
   compositionsProducts.filter((product) => {
     const compositionPrice = Number(product.querySelector('.container-list__price').textContent);
     const compositionProcent = product.dataset.discount;
-    console.log(product)
     product.style.display = 'none';
-    if ((compositionPrice >= inputFrom.value) && !inputTo.value && !productPriceOff.checked) {
-      product.style.display = 'flex';
-      // console.log('только больше')
-        console.log(product)
-    }
-    if (compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked) {
-      product.style.display = 'flex';
-      // console.log('только меньше')
-    }
-    if(!productPriceOff.checked && compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value) {
-      product.style.display = 'flex';
-      console.log('без галочки')
-    }
-    if(compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value && productPriceOff.checked && (compositionProcent == 'true')) {
-      product.style.display = 'flex';
-      console.log('с галочкой и оба интупта')
-    }
-    if(compositionPrice >= inputFrom.value && productPriceOff.checked && !inputTo.value && (compositionProcent == 'true')) {
-      product.style.display = 'flex';
-      console.log('с галочкой и только от')
-    }
-    if(compositionPrice <= inputTo.value && productPriceOff.checked && !inputFrom.value && (compositionProcent == 'true')) {
-      product.style.display = 'flex';
-      console.log('с галочкой и только до')
-    }
+    compositionPrice >= inputFrom.value && !inputTo.value && !productPriceOff.checked
+    ? (product.style.display = 'flex')
+    : compositionPrice <= inputTo.value && !inputFrom.value && !productPriceOff.checked
+    ? (product.style.display = 'flex')
+    : !productPriceOff.checked && compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value
+    ? (product.style.display = 'flex', console.log('без галочки'))
+    : compositionPrice >= inputFrom.value && compositionPrice <= inputTo.value && productPriceOff.checked && compositionProcent == 'true'
+    ? (product.style.display = 'flex', console.log('с галочкой и оба интупта'))
+    : compositionPrice >= inputFrom.value && productPriceOff.checked && !inputTo.value && compositionProcent == 'true'
+    ? (product.style.display = 'flex', console.log('с галочкой и только от'))
+    : compositionPrice <= inputTo.value && productPriceOff.checked && !inputFrom.value && compositionProcent == 'true'
+    ? (product.style.display = 'flex', console.log('с галочкой и только до'))
+    : undefined;
   })}
-})
+)
 
 const OnSortFilterHandler = (evt) => {
   const items = document.querySelectorAll('.container-list__item');
